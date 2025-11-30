@@ -12,7 +12,7 @@
 |------|------|
 | **서비스명** | Winnie (위니) |
 | **법인명** | (주)마이위니 |
-| **타겟 시장** | 베트남 거주 한인 커뮤니티 |
+| **타겟 시장** | 베트남 거주 한인, 베트남 SME(소상공인), 로컬 사용자 |
 | **서비스 유형** | 로컬 회원권/멤버십 마켓플레이스 플랫폼 |
 | **플랫폼** | iOS, Android 모바일 앱 |
 
@@ -44,25 +44,29 @@
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │   [Consumer App]          [Business Portal]                 │
-│   mywinnie.com           winnievendor.com                  │
-│   - 회원권 검색/구매      - 가게 등록/관리                   │
-│   - 사용 요청             - 회원권 상품 생성                 │
-│   - 채팅 문의             - 고객 관리                        │
+│   Winnie Mobile App       winnievendor.com                  │
+│   (iOS / Android)         - 가게 등록/관리                   │
+│   - 회원권 검색/구매      - 회원권 상품 생성                  │
+│   - 사용 요청             - 고객 관리                        │
+│   - 채팅 문의                                               │
 │                                                             │
-│              [Yellow Pages]                                 │
-│              yellow.mywinnie.com                            │
-│              - 가게 디렉토리                                 │
-│              - 업종별 검색                                   │
+│   [Landing Page]          [Yellow Pages]                    │
+│   mywinnie.com            yellow.mywinnie.com               │
+│   - 서비스 소개           - 가게 디렉토리                    │
+│   - 앱 다운로드 유도      - 업종별 검색                      │
+│   - 블로그 콘텐츠                                           │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ### 1.5 공식 채널
 
-**웹 플랫폼:**
+**플랫폼:**
+- 소비자 앱: Winnie (App Store / Google Play)
 - 랜딩페이지: https://mywinnie.com
 - 옐로우페이지: https://yellow.mywinnie.com
 - 사업자 포털: https://winnievendor.com
+- 블로그: WordPress 기반 (Headless CMS로 활용 예정)
 
 **소셜 미디어:**
 - Facebook: https://facebook.com/Winnie.yeowubie
@@ -119,12 +123,36 @@
 ├── /#faq                   # 자주 묻는 질문
 └── /#contact               # 문의하기
 
+/blog                       # 블로그 (WP Headless CMS 연동)
+├── /blog/[slug]            # 개별 포스트
+└── /blog/category/[cat]    # 카테고리별 목록
+
 /for-business               # 사업자용 페이지 (winnievendor.com 연결)
 /privacy                    # 개인정보처리방침
 /terms                      # 이용약관
 ```
 
-### 3.2 섹션별 상세 기획
+### 3.2 블로그 아키텍처 (WordPress Headless CMS)
+
+기존 WordPress 블로그를 Headless CMS로 활용하여 콘텐츠 관리 효율성 유지
+
+```
+┌─────────────────┐     REST API      ┌─────────────────┐
+│   WordPress     │ ◄───────────────► │   Next.js       │
+│   (Headless)    │    /wp-json/wp/v2 │   Frontend      │
+│                 │                   │                 │
+│ - 포스트 작성   │                   │ - SSG 빌드      │
+│ - 미디어 관리   │                   │ - ISR 적용      │
+│ - SEO 설정      │                   │ - 이미지 최적화 │
+└─────────────────┘                   └─────────────────┘
+```
+
+**장점:**
+- 기존 콘텐츠 및 에디터 경험 유지
+- 마케팅팀 독립적 콘텐츠 관리 가능
+- Next.js의 성능 이점 + WP의 CMS 편의성
+
+### 3.3 섹션별 상세 기획
 
 #### Hero Section
 ```
@@ -255,6 +283,9 @@ winnie-landing/
 │   ├── app/
 │   │   ├── [locale]/
 │   │   │   ├── page.tsx      # 메인 랜딩
+│   │   │   ├── blog/
+│   │   │   │   ├── page.tsx  # 블로그 목록
+│   │   │   │   └── [slug]/   # 개별 포스트
 │   │   │   ├── for-business/
 │   │   │   ├── privacy/
 │   │   │   └── terms/
@@ -278,7 +309,8 @@ winnie-landing/
 │   │       └── Footer.tsx
 │   ├── lib/
 │   │   ├── constants.ts
-│   │   └── utils.ts
+│   │   ├── utils.ts
+│   │   └── wordpress.ts      # WP REST API 클라이언트
 │   ├── messages/
 │   │   ├── ko.json
 │   │   ├── vi.json
@@ -313,11 +345,11 @@ winnie-landing/
 export const metadata: Metadata = {
   metadataBase: new URL('https://mywinnie.com'),
   title: {
-    default: '위니 - 베트남 한인을 위한 회원권 플랫폼',
+    default: '위니 - 베트남 로컬 회원권 플랫폼 | Winnie Vietnam',
     template: '%s | 위니'
   },
-  description: '베트남에서 스마트한 소비생활! 내 주변 가게 회원권을 검색하고, 구매하고, 관리하세요. 무료 바우처와 다양한 혜택을 누려보세요.',
-  keywords: ['위니', 'winnie', '베트남 한인', '회원권', '멤버십', '바우처', '베트남 생활'],
+  description: '베트남에서 스마트한 소비생활! 내 주변 가게 회원권을 검색하고, 구매하고, 관리하세요. 무료 바우처와 다양한 혜택을 누려보세요. Smart membership platform for Vietnam.',
+  keywords: ['위니', 'winnie', 'vietnam membership', '회원권', '멤버십', '바우처', '베트남', 'SME', 'local business'],
   authors: [{ name: '(주)마이위니' }],
   openGraph: {
     type: 'website',
@@ -400,10 +432,11 @@ module.exports = {
 ```markdown
 # Winnie (위니)
 
-> 베트남 한인을 위한 로컬 회원권/멤버십 마켓플레이스 플랫폼
+> 베트남 로컬 회원권/멤버십 마켓플레이스 플랫폼
 
 ## About
-Winnie는 베트남에 거주하는 한인들이 주변 가게의 회원권을 쉽게 검색, 구매, 관리할 수 있는 모바일 앱 서비스입니다.
+Winnie는 베트남의 로컬 비즈니스와 소비자를 연결하는 회원권 마켓플레이스 앱입니다.
+베트남 거주 한인, SME(소상공인), 로컬 사용자 모두를 위한 스마트한 소비 플랫폼입니다.
 
 ## Key Features
 - 가게/회원권 검색: 내 주변 가게와 회원권 상품 검색
@@ -411,23 +444,31 @@ Winnie는 베트남에 거주하는 한인들이 주변 가게의 회원권을 �
 - 채팅 문의: 가게 사장님과 실시간 채팅
 - 내 회원권 관리: 구매 내역, 사용 내역, 잔여 횟수 확인
 
+## For Businesses (SME)
+- 회원권 상품 등록 및 관리
+- 고객 관리 및 분석
+- 프로모션/바우처 발행
+
 ## Download
-- iOS: App Store에서 "위니" 검색
-- Android: Google Play에서 "위니" 검색
+- iOS: App Store에서 "위니" 또는 "Winnie" 검색
+- Android: Google Play에서 "위니" 또는 "Winnie" 검색
 
 ## Official Links
-- Website: https://mywinnie.com
+- Landing Page: https://mywinnie.com
 - Business Portal: https://winnievendor.com
 - Yellow Pages: https://yellow.mywinnie.com
+- Blog: https://mywinnie.com/blog
 
 ## Social Media
 - Facebook: https://facebook.com/Winnie.yeowubie
 - Instagram: https://instagram.com/mywinnie.vn/
 - YouTube: https://youtube.com/@my-winnie
+- TikTok: https://tiktok.com/@mywinnie2024
 
 ## Contact
 - Company: (주)마이위니
-- Location: Vietnam (serving Korean expat community)
+- Location: Vietnam
+- Target: Korean expats, Vietnamese SMEs, Local consumers
 ```
 
 ### 6.2 시맨틱 HTML 구조
@@ -437,7 +478,7 @@ Winnie는 베트남에 거주하는 한인들이 주변 가게의 회원권을 �
   <article itemscope itemtype="https://schema.org/MobileApplication">
     <header>
       <h1 itemprop="name">위니 - 스마트한 소비생활</h1>
-      <p itemprop="description">베트남 한인을 위한 회원권 플랫폼</p>
+      <p itemprop="description">베트남 로컬 회원권 플랫폼</p>
     </header>
 
     <section aria-labelledby="features-heading">
@@ -457,9 +498,9 @@ Winnie는 베트남에 거주하는 한인들이 주변 가게의 회원권을 �
 
 ```html
 <!-- AI 크롤러 친화적 메타태그 -->
-<meta name="description" content="베트남 한인을 위한 회원권 플랫폼 위니. 내 주변 가게 회원권 검색, 구매, 관리를 한 번에.">
+<meta name="description" content="베트남 로컬 회원권 플랫폼 위니. 내 주변 가게 회원권 검색, 구매, 관리를 한 번에. Vietnam's smart membership marketplace.">
 <meta name="ai-content-type" content="landing-page">
-<meta name="ai-summary" content="Winnie is a membership marketplace app for Korean expats in Vietnam, allowing users to discover, purchase, and manage local business memberships.">
+<meta name="ai-summary" content="Winnie is a membership marketplace app in Vietnam connecting local SMEs with consumers (Korean expats, Vietnamese locals). Users can discover, purchase, and manage local business memberships.">
 ```
 
 ---
@@ -483,27 +524,34 @@ Winnie는 베트남에 거주하는 한인들이 주변 가게의 회원권을 �
 - [ ] FAQ 섹션 (Accordion)
 - [ ] Footer 컴포넌트
 
-### Phase 3: 콘텐츠 및 다국어 지원
+### Phase 3: 블로그 연동 (WordPress Headless CMS)
+- [ ] WordPress REST API 클라이언트 구현
+- [ ] 블로그 목록 페이지 개발
+- [ ] 블로그 상세 페이지 개발
+- [ ] ISR (Incremental Static Regeneration) 설정
+- [ ] 블로그 SEO 최적화 (og:article 등)
+
+### Phase 4: 콘텐츠 및 다국어 지원
 - [ ] 한국어 콘텐츠 작성
 - [ ] 베트남어 콘텐츠 번역
 - [ ] 영어 콘텐츠 번역
 - [ ] 이미지/에셋 최적화 및 적용
 
-### Phase 4: SEO 및 AI 접근성
+### Phase 5: SEO 및 AI 접근성
 - [ ] 메타데이터 설정 (OG, Twitter Card)
 - [ ] Schema.org 구조화 데이터
 - [ ] llms.txt 파일 생성
 - [ ] sitemap.xml 자동 생성
 - [ ] robots.txt 설정
 
-### Phase 5: 성능 최적화 및 배포
+### Phase 6: 성능 최적화 및 배포
 - [ ] 이미지 최적화 (next/image)
 - [ ] 폰트 최적화 (next/font)
 - [ ] Core Web Vitals 테스트 및 개선
 - [ ] Vercel 배포 설정
 - [ ] Analytics 연동
 
-### Phase 6: QA 및 런칭
+### Phase 7: QA 및 런칭
 - [ ] 크로스 브라우저 테스트
 - [ ] 모바일 반응형 테스트
 - [ ] 접근성 (a11y) 테스트

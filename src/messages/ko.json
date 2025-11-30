@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "title": "Winnie - 베트남 로컬 회원권 플랫폼",
+    "description": "내 주변 가게 회원권 검색, 구매, 관리를 한 번에"
+  },
+  "common": {
+    "download": "앱 다운로드",
+    "learnMore": "더 알아보기",
+    "getStarted": "지금 시작하기"
+  },
+  "nav": {
+    "home": "홈",
+    "features": "기능",
+    "forBusiness": "비즈니스",
+    "blog": "블로그",
+    "download": "다운로드"
+  },
+  "hero": {
+    "title": "상상하는 모든 서비스가 한 곳에!",
+    "subtitle": "내 주변에 새로운 단골가게를 찾고, 선 결제 할인 받고, 리워드 스탬프/포인트 받고, 간편 예약까지",
+    "cta": "무료 다운로드",
+    "ctaSecondary": "자세히 보기"
+  },
+  "features": {
+    "title": "위니 Winnie는",
+    "search": {
+      "title": "가게/회원권 검색",
+      "description": "내 주변 가게와 회원권 상품을 쉽게 검색하세요"
+    },
+    "purchase": {
+      "title": "구매 신청/사용 요청",
+      "description": "모바일로 간편하게 회원권을 구매하고 사용하세요"
+    },
+    "chat": {
+      "title": "채팅 문의",
+      "description": "가게 사장님과 실시간으로 채팅 상담하세요"
+    },
+    "manage": {
+      "title": "내 회원권 관리",
+      "description": "구매 내역, 사용 내역, 잔여 횟수를 한눈에 확인하세요"
+    }
+  },
+  "benefits": {
+    "customer": {
+      "title": "고객 혜택",
+      "items": [
+        "즐겨찾기로 단골가게 관리",
+        "신제품 소식 알림",
+        "리워드 스탬프/포인트 적립"
+      ]
+    },
+    "business": {
+      "title": "판매자 혜택",
+      "items": [
+        "효과적인 마케팅",
+        "단골 고객 확장",
+        "예약 시스템 활용"
+      ]
+    }
+  },
+  "download": {
+    "title": "지금 바로 시작하세요",
+    "subtitle": "App Store와 Google Play에서 무료로 다운로드하세요",
+    "appStore": "App Store",
+    "playStore": "Google Play"
+  },
+  "footer": {
+    "company": "(주)마이위니",
+    "links": {
+      "privacy": "개인정보처리방침",
+      "terms": "이용약관"
+    },
+    "copyright": "© 2024 마이위니. All rights reserved."
+  }
+}

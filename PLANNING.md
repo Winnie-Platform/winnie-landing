@@ -752,25 +752,6 @@ const scrollInteractions = {
 | **CSS** | Critical CSS inline + Tailwind purge | < 50KB |
 | **애니메이션** | GPU 가속 (transform, opacity) | 60fps |
 
-### 9.5 PWA 지원 (선택)
-
-```json
-// manifest.json
-{
-  "name": "Winnie - 위니",
-  "short_name": "Winnie",
-  "description": "베트남 로컬 회원권 플랫폼",
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#3B82F6",
-  "background_color": "#ffffff",
-  "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192" },
-    { "src": "/icon-512.png", "sizes": "512x512" }
-  ]
-}
-```
-
 ---
 
 ## 10. 개발 계획 (Milestones)

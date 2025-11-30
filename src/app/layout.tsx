@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import JsonLd, { mobileAppSchema, organizationSchema, websiteSchema } from '@/components/seo/JsonLd';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -35,6 +36,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  alternates: {
+    canonical: 'https://mywinnie.com',
+    languages: {
+      'ko-KR': 'https://mywinnie.com/ko',
+      'vi-VN': 'https://mywinnie.com/vi',
+      'en-US': 'https://mywinnie.com/en',
+    },
+  },
 };
 
 export default function RootLayout({
@@ -51,6 +60,9 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <JsonLd data={mobileAppSchema} />
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
       </head>
       <body className="font-sans antialiased">{children}</body>
     </html>

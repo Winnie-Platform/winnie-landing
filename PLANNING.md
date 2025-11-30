@@ -884,11 +884,21 @@ const scrollInteractions = {
 
 ### 11.2 타이포그래피
 
+모든 언어(한국어, 베트남어, 영어)에 **Montserrat** 폰트 통일 사용
+
 ```css
 :root {
-  --font-heading: 'Pretendard', sans-serif;
-  --font-body: 'Pretendard', sans-serif;
+  /* Montserrat - 모든 언어 공통 (Google Fonts) */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
 
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Font Sizes */
   --text-xs: 0.75rem;    /* 12px */
   --text-sm: 0.875rem;   /* 14px */
   --text-base: 1rem;     /* 16px */
@@ -899,6 +909,41 @@ const scrollInteractions = {
   --text-4xl: 2.25rem;   /* 36px */
   --text-5xl: 3rem;      /* 48px */
 }
+```
+
+#### Next.js 폰트 설정
+
+```typescript
+// app/layout.tsx
+import { Montserrat } from 'next/font/google';
+
+const montserrat = Montserrat({
+  subsets: ['latin', 'vietnamese'],  // 한글은 latin으로 커버, 베트남어 포함
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-montserrat',
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html className={montserrat.variable}>
+      <body className="font-sans">{children}</body>
+    </html>
+  );
+}
+```
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-montserrat)', 'sans-serif'],
+      },
+    },
+  },
+};
 ```
 
 ### 11.3 브랜드 에셋

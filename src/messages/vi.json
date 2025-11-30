@@ -1,0 +1,75 @@
+{
+  "metadata": {
+    "title": "Winnie - Nền tảng thẻ thành viên địa phương Việt Nam",
+    "description": "Tìm kiếm, mua và quản lý thẻ thành viên cửa hàng xung quanh bạn"
+  },
+  "common": {
+    "download": "Tải ứng dụng",
+    "learnMore": "Tìm hiểu thêm",
+    "getStarted": "Bắt đầu ngay"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "features": "Tính năng",
+    "forBusiness": "Doanh nghiệp",
+    "blog": "Blog",
+    "download": "Tải về"
+  },
+  "hero": {
+    "title": "Mọi dịch vụ bạn tưởng tượng đều ở một nơi!",
+    "subtitle": "Tìm cửa hàng quen mới, nhận giảm giá khi thanh toán trước, tích điểm thưởng và đặt lịch dễ dàng",
+    "cta": "Tải miễn phí",
+    "ctaSecondary": "Xem chi tiết"
+  },
+  "features": {
+    "title": "Winnie là gì?",
+    "search": {
+      "title": "Tìm kiếm cửa hàng/thẻ thành viên",
+      "description": "Dễ dàng tìm kiếm cửa hàng và thẻ thành viên xung quanh bạn"
+    },
+    "purchase": {
+      "title": "Đăng ký mua/Yêu cầu sử dụng",
+      "description": "Mua và sử dụng thẻ thành viên tiện lợi trên di động"
+    },
+    "chat": {
+      "title": "Chat tư vấn",
+      "description": "Chat trực tiếp với chủ cửa hàng"
+    },
+    "manage": {
+      "title": "Quản lý thẻ thành viên",
+      "description": "Xem lịch sử mua, lịch sử sử dụng và số lần còn lại trong một nháy mắt"
+    }
+  },
+  "benefits": {
+    "customer": {
+      "title": "Lợi ích khách hàng",
+      "items": [
+        "Quản lý cửa hàng yêu thích",
+        "Thông báo sản phẩm mới",
+        "Tích điểm thưởng"
+      ]
+    },
+    "business": {
+      "title": "Lợi ích người bán",
+      "items": [
+        "Marketing hiệu quả",
+        "Mở rộng khách hàng thân thiết",
+        "Sử dụng hệ thống đặt lịch"
+      ]
+    }
+  },
+  "download": {
+    "title": "Bắt đầu ngay bây giờ",
+    "subtitle": "Tải miễn phí trên App Store và Google Play",
+    "appStore": "App Store",
+    "playStore": "Google Play"
+  },
+  "footer": {
+    "company": "My Winnie Co., Ltd.",
+    "links": {
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản sử dụng"
+    },
+    "copyright": "© 2024 My Winnie. All rights reserved."
+  }
+}

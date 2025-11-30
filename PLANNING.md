@@ -258,12 +258,37 @@
 |----------|------|-----------|
 | **Framework** | Next.js 14 (App Router) | SSG/SSR 지원, 최적화된 이미지 처리, SEO 친화적 |
 | **Language** | TypeScript | 타입 안전성, 개발 생산성 |
+| **UI Library** | **shadcn/ui** | 엔터프라이즈급, Radix UI 기반 접근성, 완전한 커스터마이징 |
 | **Styling** | Tailwind CSS | 빠른 개발, 작은 번들 사이즈, 유지보수 용이 |
 | **Animation** | Framer Motion | 부드러운 애니메이션, 성능 최적화 |
-| **Icons** | Lucide React | 가벼운 아이콘 라이브러리 |
+| **Icons** | Lucide React | shadcn/ui 기본 아이콘, 가벼움 |
 | **Deployment** | Vercel | Next.js 최적화, Edge Network, 무료 SSL |
 | **Analytics** | Vercel Analytics + GA4 | 성능 모니터링, 사용자 분석 |
 | **i18n** | next-intl | 다국어 지원 (KO, VN, EN) |
+
+#### shadcn/ui 선정 이유
+
+```
+엔터프라이즈급 UI 라이브러리 비교:
+
+┌──────────────┬─────────────┬─────────────┬─────────────┐
+│              │ shadcn/ui   │ Ant Design  │ Chakra UI   │
+├──────────────┼─────────────┼─────────────┼─────────────┤
+│ 번들 사이즈   │ 매우 작음    │ 큼          │ 중간        │
+│ 커스터마이징  │ 완전 제어    │ 제한적      │ 보통        │
+│ 접근성       │ Radix 기반   │ 보통        │ 좋음        │
+│ Tailwind     │ 네이티브     │ 별도 설정   │ 충돌 가능   │
+│ 트리쉐이킹   │ 완벽        │ 제한적      │ 보통        │
+│ 디자인 모던함 │ 최신 트렌드  │ 비즈니스    │ 심플        │
+└──────────────┴─────────────┴─────────────┴─────────────┘
+
+선정: shadcn/ui
+- 코드 완전 소유 (copy-paste 방식)
+- Radix UI Primitives 기반 접근성 보장
+- Tailwind CSS 네이티브 통합
+- Vercel/Next.js 공식 권장
+- 모바일 최적화 용이
+```
 
 ### 4.2 프로젝트 구조
 

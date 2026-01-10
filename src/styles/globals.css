@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* ============================================
+   3F Web Core Template - Global Styles
+   Fast + Fair + Flexible
+   ============================================ */
+
 :root {
   /* Primary - Winnie Blue */
   --color-primary-50: #EBF5FF;
@@ -38,32 +43,45 @@
   /* Background/Foreground */
   --background: #ffffff;
   --foreground: #111827;
+
+  /* Spacing */
+  --spacing-section: 5rem;
+  --spacing-container: 1rem;
 }
 
+/* ============================================
+   Tailwind Theme Extensions
+   ============================================ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: 'Montserrat', system-ui, sans-serif;
 
-  /* Tailwind theme extensions */
+  /* Primary Colors */
   --color-primary-50: var(--color-primary-50);
   --color-primary-100: var(--color-primary-100);
   --color-primary-500: var(--color-primary-500);
   --color-primary-600: var(--color-primary-600);
   --color-primary-700: var(--color-primary-700);
 
+  /* Secondary Colors */
   --color-secondary-400: var(--color-secondary-400);
   --color-secondary-500: var(--color-secondary-500);
   --color-secondary-600: var(--color-secondary-600);
 
+  /* CTA Colors */
   --color-cta-400: var(--color-cta-400);
   --color-cta-500: var(--color-cta-500);
   --color-cta-600: var(--color-cta-600);
 
+  /* Accent Colors */
   --color-accent-400: var(--color-accent-400);
   --color-accent-500: var(--color-accent-500);
 }
 
+/* ============================================
+   Base Styles
+   ============================================ */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -87,4 +105,80 @@ html {
 *:focus-visible {
   outline: 2px solid var(--color-primary-500);
   outline-offset: 2px;
+}
+
+/* ============================================
+   Animation Keyframes
+   ============================================ */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
 }

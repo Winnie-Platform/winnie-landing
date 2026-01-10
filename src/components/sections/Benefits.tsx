@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Heart, Bell, Award, TrendingUp, Users, Calendar } from 'lucide-react';
+import { SectionTitle, Button, Card } from '@/components/ui';
 
 const customerBenefits = [
   { icon: Heart, key: 0 },
@@ -22,19 +23,11 @@ export default function Benefits() {
   return (
     <section id="benefits" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            모두를 위한 혜택
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-            고객과 사업자 모두 윈-윈하는 플랫폼
-          </p>
-        </motion.div>
+        <SectionTitle
+          title="모두를 위한 혜택"
+          subtitle="고객과 사업자 모두 윈-윈하는 플랫폼"
+          align="center"
+        />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
           {/* Customer Benefits */}
@@ -81,14 +74,16 @@ export default function Benefits() {
                 </div>
               ))}
             </div>
-            <a
+            <Button
+              as="a"
               href="https://winnievendor.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-white px-6 font-semibold text-[var(--color-secondary-600)] transition-transform hover:scale-105"
+              variant="outline"
+              className="mt-8 h-12 rounded-full border-white bg-white px-6 text-[var(--color-secondary-600)] hover:scale-105 hover:bg-white/90"
             >
               비즈니스 포털 가입하기
-            </a>
+            </Button>
           </motion.div>
         </div>
 
@@ -97,15 +92,17 @@ export default function Benefits() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 rounded-2xl bg-gray-50 p-8 text-center"
+          className="mt-12"
         >
-          <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-accent-400)]">
-            <span className="text-3xl">💰</span>
-          </div>
-          <h3 className="text-xl font-bold text-gray-900">직접 지불 방식</h3>
-          <p className="mx-auto mt-2 max-w-xl text-gray-600">
-            위니는 플랫폼 수수료가 없습니다. 고객과 가게 사이의 직접 결제로 투명하고 합리적인 거래를 지원합니다.
-          </p>
+          <Card variant="default" padding="lg" rounded="lg" className="bg-gray-50 text-center">
+            <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-accent-400)]">
+              <span className="text-3xl">💰</span>
+            </div>
+            <h3 className="text-xl font-bold text-gray-900">직접 지불 방식</h3>
+            <p className="mx-auto mt-2 max-w-xl text-gray-600">
+              위니는 플랫폼 수수료가 없습니다. 고객과 가게 사이의 직접 결제로 투명하고 합리적인 거래를 지원합니다.
+            </p>
+          </Card>
         </motion.div>
       </div>
     </section>

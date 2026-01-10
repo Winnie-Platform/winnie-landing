@@ -1,107 +1,70 @@
 'use client';
 
-import { forwardRef, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
+import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-type ButtonVariant = 'primary' | 'secondary' | 'cta' | 'outline' | 'ghost';
-type ButtonSize = 'sm' | 'md' | 'lg';
-
-interface ButtonBaseProps {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  fullWidth?: boolean;
-  isLoading?: boolean;
-}
-
-type ButtonAsButton = ButtonBaseProps &
-  ButtonHTMLAttributes<HTMLButtonElement> & {
-    as?: 'button';
-    href?: never;
-  };
-
-type ButtonAsAnchor = ButtonBaseProps &
-  AnchorHTMLAttributes<HTMLAnchorElement> & {
-    as: 'a';
-    href: string;
-  };
-
-type ButtonProps = ButtonAsButton | ButtonAsAnchor;
-
-const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    'bg-[var(--color-primary-500)] text-white hover:bg-[var(--color-primary-600)] shadow-sm',
-  secondary:
-    'bg-[var(--color-secondary-500)] text-white hover:bg-[var(--color-secondary-600)] shadow-sm',
-  cta: 'bg-[var(--color-cta-500)] text-white hover:bg-[var(--color-cta-600)] shadow-sm',
-  outline:
-    'border-2 border-[var(--color-primary-500)] text-[var(--color-primary-500)] hover:bg-[var(--color-primary-50)]',
-  ghost: 'text-gray-600 hover:bg-gray-100',
-};
-
-const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-sm rounded-lg',
-  md: 'px-6 py-2.5 text-sm rounded-xl',
-  lg: 'px-8 py-3 text-base rounded-xl',
-};
-
-const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      variant = 'primary',
-      size = 'md',
-      fullWidth = false,
-      isLoading = false,
-      className,
-      children,
-      ...rest
-    } = props;
-
-    const baseStyles = cn(
-      'inline-flex items-center justify-center font-semibold transition-all duration-200',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary-500)] focus-visible:ring-offset-2',
-      'disabled:opacity-50 disabled:cursor-not-allowed',
-      variantStyles[variant],
-      sizeStyles[size],
-      fullWidth && 'w-full',
-      isLoading && 'cursor-wait',
-      className
-    );
-
-    if (props.as === 'a') {
-      const { as, href, ...anchorProps } = rest as Omit<ButtonAsAnchor, keyof ButtonBaseProps>;
-      return (
-        <a
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          href={href}
-          className={baseStyles}
-          {...anchorProps}
-        >
-          {isLoading ? (
-            <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-          ) : null}
-          {children}
-        </a>
-      );
-    }
-
-    const { as, disabled, ...buttonProps } = rest as Omit<ButtonAsButton, keyof ButtonBaseProps>;
-    return (
-      <button
-        ref={ref as React.Ref<HTMLButtonElement>}
-        className={baseStyles}
-        disabled={disabled || isLoading}
-        {...buttonProps}
-      >
-        {isLoading ? (
-          <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-        ) : null}
-        {children}
-      </button>
-    );
+const buttonVariants = cva(
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+  {
+    variants: {
+      variant: {
+        primary:
+          'bg-[var(--color-primary-500)] text-white hover:bg-[var(--color-primary-600)] shadow-sm focus-visible:ring-[var(--color-primary-500)]',
+        secondary:
+          'bg-[var(--color-secondary-500)] text-white hover:bg-[var(--color-secondary-600)] shadow-sm focus-visible:ring-[var(--color-secondary-500)]',
+        cta: 'bg-[var(--color-cta-500)] text-white hover:bg-[var(--color-cta-600)] shadow-sm focus-visible:ring-[var(--color-cta-500)]',
+        destructive:
+          'bg-red-500 text-white hover:bg-red-600 shadow-sm focus-visible:ring-red-500',
+        outline:
+          'border-2 border-[var(--color-primary-500)] text-[var(--color-primary-500)] hover:bg-[var(--color-primary-50)] focus-visible:ring-[var(--color-primary-500)]',
+        ghost: 'text-gray-600 hover:bg-gray-100 focus-visible:ring-gray-500',
+        link: 'text-[var(--color-primary-500)] underline-offset-4 hover:underline focus-visible:ring-[var(--color-primary-500)]',
+      },
+      size: {
+        sm: 'h-9 px-4 text-sm rounded-lg',
+        md: 'h-10 px-6 text-sm rounded-xl',
+        lg: 'h-12 px-8 text-base rounded-xl',
+        icon: 'h-10 w-10 rounded-xl',
+      },
+    },
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+    },
   }
 );
 
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+  isLoading?: boolean;
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, isLoading = false, children, disabled, ...props }, ref) => {
+    const Comp = asChild ? Slot : 'button';
+    return (
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }), isLoading && 'cursor-wait')}
+        ref={ref}
+        disabled={disabled || isLoading}
+        {...props}
+      >
+        {isLoading ? (
+          <>
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+            {children}
+          </>
+        ) : (
+          children
+        )}
+      </Comp>
+    );
+  }
+);
 Button.displayName = 'Button';
 
-export { Button };
-export type { ButtonProps, ButtonVariant, ButtonSize };
+export { Button, buttonVariants };

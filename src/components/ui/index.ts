@@ -2,34 +2,36 @@
  * UI Components
  * 3F Web Core Template - Fast + Fair + Flexible
  *
- * Reusable UI components following consistent design patterns
+ * Reusable UI components built with shadcn patterns
+ * Using class-variance-authority (cva) for consistent variants
  */
 
 // Button
-export { Button } from './Button';
-export type { ButtonProps, ButtonVariant, ButtonSize } from './Button';
+export { Button, buttonVariants } from './Button';
+export type { ButtonProps } from './Button';
 
 // Badge
-export { Badge } from './Badge';
-export type { BadgeProps, BadgeVariant, BadgeSize } from './Badge';
+export { Badge, badgeVariants } from './Badge';
+export type { BadgeProps } from './Badge';
 
 // Card
 export {
   Card,
-  CardBadge,
-  CardImage,
-  CardContent,
+  CardHeader,
+  CardFooter,
   CardTitle,
   CardDescription,
+  CardContent,
+  CardBadge,
+  CardImage,
+  cardVariants,
+  cardImageVariants,
 } from './Card';
 export type {
   CardProps,
+  CardTitleProps,
   CardBadgeProps,
   CardImageProps,
-  CardContentProps,
-  CardTitleProps,
-  CardDescriptionProps,
-  CardVariant,
 } from './Card';
 
 // SectionTitle

@@ -62,13 +62,12 @@ export default function HowItWorks() {
           className="mt-16 text-center"
         >
           <Button
-            as="a"
-            href="#download"
+            asChild
             variant="cta"
             size="lg"
             className="h-14 rounded-full px-10 text-lg shadow-lg hover:shadow-xl"
           >
-            {t('common.getStarted')}
+            <a href="#download">{t('common.getStarted')}</a>
           </Button>
         </motion.div>
       </div>

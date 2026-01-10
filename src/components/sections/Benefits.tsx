@@ -75,14 +75,17 @@ export default function Benefits() {
               ))}
             </div>
             <Button
-              as="a"
-              href="https://winnievendor.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              asChild
               variant="outline"
               className="mt-8 h-12 rounded-full border-white bg-white px-6 text-[var(--color-secondary-600)] hover:scale-105 hover:bg-white/90"
             >
-              비즈니스 포털 가입하기
+              <a
+                href="https://winnievendor.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                비즈니스 포털 가입하기
+              </a>
             </Button>
           </motion.div>
         </div>

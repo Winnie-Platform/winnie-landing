@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Smartphone, Search, CreditCard, Gift } from 'lucide-react';
+import { SectionTitle, Button } from '@/components/ui';
 
 const steps = [
   { icon: Smartphone, title: '앱 다운로드', desc: 'App Store/Google Play에서 위니 앱을 무료로 다운로드하세요' },
@@ -17,19 +18,11 @@ export default function HowItWorks() {
   return (
     <section className="bg-gray-50 py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            이렇게 시작하세요
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-            단 4단계로 시작하는 스마트한 소비생활
-          </p>
-        </motion.div>
+        <SectionTitle
+          title="이렇게 시작하세요"
+          subtitle="단 4단계로 시작하는 스마트한 소비생활"
+          align="center"
+        />
 
         <div className="mt-16">
           <div className="relative">
@@ -68,12 +61,15 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <a
+          <Button
+            as="a"
             href="#download"
-            className="inline-flex h-14 items-center justify-center rounded-full bg-[var(--color-cta-500)] px-10 text-lg font-semibold text-white shadow-lg transition-all hover:bg-[var(--color-cta-600)] hover:shadow-xl"
+            variant="cta"
+            size="lg"
+            className="h-14 rounded-full px-10 text-lg shadow-lg hover:shadow-xl"
           >
             {t('common.getStarted')}
-          </a>
+          </Button>
         </motion.div>
       </div>
     </section>

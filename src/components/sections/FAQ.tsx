@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { SectionTitle, Card } from '@/components/ui';
 
 const faqs = [
   {
@@ -38,19 +39,11 @@ export default function FAQ() {
   return (
     <section className="bg-gray-50 py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            자주 묻는 질문
-          </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            궁금한 점이 있으신가요?
-          </p>
-        </motion.div>
+        <SectionTitle
+          title="자주 묻는 질문"
+          subtitle="궁금한 점이 있으신가요?"
+          align="center"
+        />
 
         <div className="mt-12 space-y-4">
           {faqs.map((faq, index) => (

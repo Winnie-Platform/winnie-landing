@@ -1,7 +1,10 @@
 export { default as Hero } from './Hero';
+export { default as UserAppSection } from './UserAppSection';
+export { default as VendorAppSection } from './VendorAppSection';
+export { default as Benefits } from './Benefits';
+export { default as NewsSection } from './NewsSection';
+export { default as Download } from './Download';
 export { default as Features } from './Features';
 export { default as HowItWorks } from './HowItWorks';
-export { default as Benefits } from './Benefits';
 export { default as Testimonials } from './Testimonials';
 export { default as FAQ } from './FAQ';
-export { default as Download } from './Download';

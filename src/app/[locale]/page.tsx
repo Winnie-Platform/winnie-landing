@@ -2,11 +2,10 @@ import { setRequestLocale } from 'next-intl/server';
 import { Header, Footer, MobileStickyBar } from '@/components/layout';
 import {
   Hero,
-  Features,
-  HowItWorks,
+  UserAppSection,
+  VendorAppSection,
   Benefits,
-  Testimonials,
-  FAQ,
+  NewsSection,
   Download,
 } from '@/components/sections';
 
@@ -23,11 +22,10 @@ export default async function HomePage({ params }: Props) {
       <Header />
       <main>
         <Hero />
-        <Features />
-        <HowItWorks />
+        <UserAppSection />
+        <VendorAppSection />
         <Benefits />
-        <Testimonials />
-        <FAQ />
+        <NewsSection />
         <Download />
       </main>
       <Footer />

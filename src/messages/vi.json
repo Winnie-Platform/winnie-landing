@@ -10,123 +10,167 @@
   },
   "nav": {
     "home": "Trang chủ",
-    "features": "Ứng dụng User",
-    "forBusiness": "Ứng dụng Vendor",
+    "features": "Tính năng",
+    "howItWorks": "Cách sử dụng",
     "blog": "Blog",
-    "download": "Tải về"
+    "download": "Tải về",
+    "language": "Ngôn ngữ"
   },
   "hero": {
+    "badge": "Nền tảng thẻ thành viên số 1 Việt Nam",
     "title": "Mọi dịch vụ bạn tưởng tượng đều ở một nơi!",
-    "subtitle": "Tìm cửa hàng quen mới gần bạn, sử dụng dịch vụ với giá ưu đãi khi thanh toán trước.",
-    "description": "Nhận tem thưởng và điểm từ doanh nghiệp, đặt lịch dễ dàng... Trải nghiệm các dịch vụ đa dạng trong tầm tay bạn."
+    "subtitle": "Tìm cửa hàng quen mới gần bạn, sử dụng dịch vụ với giá ưu đãi khi thanh toán trước. Nhận tem thưởng và điểm từ doanh nghiệp, đặt lịch cũng dễ dàng!",
+    "appPreview": "Quản lý thẻ thành viên trở nên dễ dàng",
+    "secure": "Giao dịch an toàn",
+    "stats": {
+      "users": "Lượt tải",
+      "rating": "Đánh giá",
+      "secure": "Bảo mật"
+    }
   },
-  "userApp": {
-    "badge": "Ứng dụng User",
-    "tagline": "Tận hưởng sản phẩm dịch vụ chất lượng với ưu đãi thanh toán trước!",
-    "headline": "Ease your everyday with a single device",
-    "appPreview": "Xem trước ứng dụng",
-    "ctaButton": "Tìm hiểu thêm về ứng dụng User",
-    "features": {
-      "0": {
+  "features": {
+    "title": "Tính năng Winnie cung cấp",
+    "subtitle": "Mọi thứ để quản lý thẻ thành viên trong một ứng dụng",
+    "items": {
+      "search": {
         "title": "Tìm kiếm cửa hàng/thẻ thành viên",
-        "description": "Dễ dàng tìm kiếm cửa hàng và thẻ thành viên xung quanh bạn"
+        "description": "Dễ dàng tìm kiếm và so sánh cửa hàng và thẻ thành viên gần bạn"
       },
-      "1": {
-        "title": "Đăng ký mua/Yêu cầu sử dụng",
+      "purchase": {
+        "title": "Mua/Sử dụng",
         "description": "Mua và sử dụng thẻ thành viên tiện lợi trên di động"
       },
-      "2": {
+      "chat": {
         "title": "Chat tư vấn",
-        "description": "Chat trực tiếp với chủ cửa hàng"
+        "description": "Chat trực tiếp với chủ cửa hàng theo thời gian thực"
       },
-      "3": {
+      "manage": {
         "title": "Quản lý thẻ thành viên",
-        "description": "Xem lịch sử mua, lịch sử sử dụng và số lần còn lại trong một nháy mắt"
+        "description": "Xem lịch sử mua, lịch sử sử dụng và số lần còn lại trong một cái nhìn"
       }
     }
   },
-  "vendorApp": {
-    "badge": "Ứng dụng Vendor",
-    "tagline": "Mở rộng cơ sở khách hàng và tận dụng nền tảng số!",
-    "appPreview": "Khách quen của tôi, Winnie của tôi",
-    "featureCard": {
-      "title": "Highlight and spread worth of your store & services",
-      "description": "Tiếp cận nhiều khách hàng hơn với tiếp thị số",
-      "cta": "Tìm hiểu thêm về ứng dụng Vendor"
-    },
-    "features": {
+  "howItWorks": {
+    "title": "3 bước đơn giản",
+    "subtitle": "Cách bắt đầu với Winnie",
+    "steps": {
       "0": {
-        "icon": "📊",
-        "title": "Marketing hiệu quả",
-        "description": "Tiếp cận nhiều khách hàng tiềm năng hơn thông qua nền tảng Winnie"
+        "title": "Tải ứng dụng",
+        "description": "Tải miễn phí ứng dụng Winnie từ App Store hoặc Google Play"
       },
       "1": {
-        "icon": "👥",
-        "title": "Quản lý khách hàng",
-        "description": "Quản lý thông tin khách hàng và lịch sử mua hàng trong một cái nhìn"
+        "title": "Khám phá cửa hàng",
+        "description": "Tìm cửa hàng và thẻ thành viên ưu đãi gần bạn"
       },
       "2": {
-        "icon": "📅",
-        "title": "Hệ thống đặt lịch",
-        "description": "Vận hành hiệu quả với quản lý đặt lịch dễ dàng"
+        "title": "Sử dụng dịch vụ",
+        "description": "Mua thẻ thành viên và tận hưởng nhiều ưu đãi"
       }
     },
-    "ctaButton": "Đi đến ứng dụng Vendor"
-  },
-  "benefits": {
-    "subtitle": "WINNIE là",
-    "title": "Giải pháp di động cho lối sống mới.",
-    "description": "Khách hàng nhận ưu đãi và phần thưởng, nhà cung cấp mở rộng kinh doanh.",
-    "items": {
-      "optimization": {
-        "title": "Tối ưu hóa người dùng",
-        "description": "Quản lý cửa hàng và dịch vụ yêu thích trên điện thoại, cập nhật sản phẩm mới. Tận hưởng các ưu đãi đa dạng và quét tem thưởng tại một nơi."
-      },
-      "expansion": {
-        "title": "Mở rộng bán hàng",
-        "description": "Quảng bá dịch vụ và sản phẩm đến người dùng nền tảng Winnie, sử dụng công cụ marketing chủ động để mở rộng khách hàng thân thiết. Quản lý đặt lịch và voucher trong tầm tay."
-      },
-      "payment": {
-        "title": "Thanh toán trực tiếp",
-        "description": "Không có thanh toán dịch vụ hoặc giao dịch tiền mặt trong nền tảng Winnie. Mọi giao dịch đều trực tiếp giữa khách hàng và người bán, bạn không cần lo lắng về kiểm tra hay lo âu."
-      }
-    }
-  },
-  "news": {
-    "badge": "CÓ GÌ MỚI?!",
-    "title": "Tin tức mới nhất",
-    "readMore": "Đọc thêm",
-    "viewAll": "Tải thêm tin tức",
-    "items": {
-      "0": {
-        "title": "Hướng dẫn tham gia Winnie Vendor cho chủ doanh nghiệp",
-        "excerpt": "Đăng ký làm người bán dễ dàng qua ứng dụng Winnie Vendor"
-      },
-      "1": {
-        "title": "Nền tảng là gì và tại sao doanh nghiệp nhỏ nên sử dụng?",
-        "excerpt": "Tìm hiểu về lợi ích và cách sử dụng nền tảng số"
-      },
-      "2": {
-        "title": "Thực tế marketing doanh nghiệp nhỏ và giải pháp",
-        "excerpt": "Tăng doanh số với chiến lược marketing hiệu quả"
-      }
-    }
+    "cta": "Bắt đầu ngay"
   },
   "download": {
-    "title": "See how we can help your business grow with digital marketing platform",
-    "subtitle": "Nếu bạn muốn bán sản phẩm dịch vụ trên nền tảng Winnie, đăng ký tại Winnie Vendor.",
-    "ctaButton": "Đi đến ứng dụng Vendor",
+    "title": "Bắt đầu ngay hôm nay",
+    "subtitle": "Tải miễn phí từ App Store và Google Play để tận hưởng nhiều ưu đãi thẻ thành viên",
     "appStore": "App Store",
     "playStore": "Google Play"
   },
   "footer": {
-    "company": "My Winnie Co., Ltd.",
-    "copyright": "© 2026 My Winnie Interaction. All rights reserved.",
+    "description": "Nền tảng thẻ thành viên địa phương Việt Nam kết nối khách hàng và cửa hàng.",
     "links": {
-      "faq": "FAQs",
-      "contact": "Liên hệ",
+      "terms": "Điều khoản sử dụng",
       "privacy": "Chính sách bảo mật",
-      "terms": "Điều khoản sử dụng"
+      "contact": "Liên hệ"
+    },
+    "copyright": "© 2026 My Winnie Interaction. All rights reserved."
+  },
+  "terms": {
+    "meta": {
+      "title": "Điều khoản sử dụng - Winnie",
+      "description": "Điều khoản sử dụng dịch vụ Winnie"
+    },
+    "badge": "Tài liệu pháp lý",
+    "title": "Điều khoản sử dụng",
+    "lastUpdated": "Cập nhật lần cuối",
+    "contact": "Liên hệ",
+    "sections": {
+      "purpose": {
+        "title": "Mục đích",
+        "content": "Các điều khoản này nhằm quy định các điều kiện và thủ tục sử dụng dịch vụ Winnie do My Winnie Co., Ltd. (sau đây gọi là 'Công ty') cung cấp, cũng như quyền, nghĩa vụ và trách nhiệm giữa Công ty và thành viên."
+      },
+      "definitions": {
+        "title": "Định nghĩa",
+        "content": "• 'Dịch vụ' là nền tảng marketplace thẻ thành viên do Công ty cung cấp.\n• 'Thành viên' là người đã đăng ký và sử dụng Dịch vụ.\n• 'Người bán' là doanh nghiệp bán thẻ thành viên thông qua Dịch vụ."
+      },
+      "terms": {
+        "title": "Hiệu lực và sửa đổi điều khoản",
+        "content": "Các điều khoản này áp dụng cho tất cả thành viên muốn sử dụng Dịch vụ. Công ty có thể sửa đổi các điều khoản này khi cần thiết trong phạm vi pháp luật hiện hành."
+      },
+      "services": {
+        "title": "Cung cấp dịch vụ",
+        "content": "Các dịch vụ do Công ty cung cấp bao gồm:\n• Tìm kiếm sản phẩm thẻ thành viên và cung cấp thông tin\n• Trung gian giao dịch giữa người bán và thành viên\n• Dịch vụ quản lý thẻ thành viên\n• Các dịch vụ khác do Công ty quy định"
+      },
+      "membership": {
+        "title": "Đăng ký thành viên",
+        "content": "Những người muốn sử dụng Dịch vụ đăng ký thành viên bằng cách nhập thông tin theo mẫu đăng ký do Công ty quy định và thể hiện sự đồng ý với các điều khoản này."
+      },
+      "obligations": {
+        "title": "Nghĩa vụ của thành viên",
+        "content": "Thành viên không được thực hiện các hành vi sau:\n• Đánh cắp danh tính\n• Can thiệp vào hoạt động bình thường của dịch vụ\n• Thu thập thông tin cá nhân của thành viên khác\n• Các hành vi khác vi phạm pháp luật hoặc đạo đức"
+      },
+      "transactions": {
+        "title": "Giao dịch và thanh toán",
+        "content": "Dịch vụ Winnie trung gian giao dịch trực tiếp giữa thành viên và người bán. Thanh toán được thực hiện trực tiếp cho người bán, Công ty không thu phí nền tảng."
+      },
+      "liability": {
+        "title": "Giới hạn trách nhiệm",
+        "content": "Công ty chỉ đóng vai trò trung gian cho giao dịch giữa thành viên và người bán, trách nhiệm giao dịch thuộc về các bên liên quan."
+      },
+      "disputes": {
+        "title": "Giải quyết tranh chấp",
+        "content": "Luật Hàn Quốc áp dụng cho các tranh chấp phát sinh từ việc sử dụng Dịch vụ, và Tòa án Quận Trung tâm Seoul có thẩm quyền."
+      }
+    }
+  },
+  "privacy": {
+    "meta": {
+      "title": "Chính sách bảo mật - Winnie",
+      "description": "Chính sách bảo mật Winnie"
+    },
+    "badge": "Bảo vệ quyền riêng tư",
+    "title": "Chính sách bảo mật",
+    "lastUpdated": "Cập nhật lần cuối",
+    "intro": "My Winnie Co., Ltd. (sau đây gọi là 'Công ty') coi trọng quyền riêng tư của người dùng và tuân thủ Luật Bảo vệ Thông tin Cá nhân.",
+    "contactInfo": "Liên hệ",
+    "sections": {
+      "collection": {
+        "title": "Thông tin cá nhân thu thập",
+        "content": "Công ty thu thập các thông tin cá nhân sau để cung cấp dịch vụ:\n• Bắt buộc: Địa chỉ email, mật khẩu, biệt danh\n• Tùy chọn: Ảnh hồ sơ, số điện thoại\n• Thu thập tự động: Thông tin thiết bị, lịch sử sử dụng dịch vụ, thông tin IP truy cập"
+      },
+      "purpose": {
+        "title": "Mục đích thu thập và sử dụng",
+        "content": "• Cung cấp và vận hành dịch vụ\n• Quản lý thành viên và xác minh danh tính\n• Cải thiện dịch vụ và phát triển dịch vụ mới\n• Sử dụng cho marketing và quảng cáo (khi có đồng ý)"
+      },
+      "retention": {
+        "title": "Thời gian lưu trữ và sử dụng",
+        "content": "Công ty hủy thông tin cá nhân ngay sau khi đạt được mục đích thu thập và sử dụng. Tuy nhiên, thông tin có thể được lưu giữ trong một thời gian nhất định nếu pháp luật yêu cầu."
+      },
+      "sharing": {
+        "title": "Cung cấp cho bên thứ ba",
+        "content": "Công ty không cung cấp thông tin cá nhân của người dùng cho bên thứ ba về nguyên tắc. Tuy nhiên, ngoại lệ áp dụng khi có sự đồng ý của người dùng hoặc khi pháp luật yêu cầu."
+      },
+      "rights": {
+        "title": "Quyền của người dùng",
+        "content": "Người dùng có thể xem hoặc sửa đổi thông tin cá nhân của mình bất cứ lúc nào và yêu cầu hủy thành viên."
+      },
+      "security": {
+        "title": "Biện pháp bảo mật",
+        "content": "Công ty thực hiện các biện pháp kỹ thuật và quản trị như mã hóa, hạn chế truy cập và cài đặt phần mềm bảo mật để đảm bảo an toàn thông tin cá nhân."
+      },
+      "contact": {
+        "title": "Người phụ trách bảo mật",
+        "content": "Công ty chỉ định người phụ trách bảo mật để giám sát xử lý thông tin cá nhân và xử lý khiếu nại cũng như khắc phục thiệt hại cho người dùng.\n\n• Người phụ trách bảo mật: Giám đốc My Winnie Co., Ltd.\n• Liên hệ: support@mywinnie.com"
+      }
     }
   }
 }

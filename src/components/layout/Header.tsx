@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Apple, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const languages = [
@@ -33,7 +33,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close language menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
@@ -44,7 +43,6 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
@@ -72,8 +70,8 @@ export default function Header() {
   const currentLang = languages.find((l) => l.code === locale) || languages[0];
 
   const navLinks = [
-    { href: '#features', label: t('features') },
-    { href: '#benefits', label: t('forBusiness') },
+    { href: '#user-app', label: t('features') },
+    { href: '#vendor-app', label: t('forBusiness') },
     { href: `/${locale}/blog`, label: t('blog') },
   ];
 
@@ -82,16 +80,16 @@ export default function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled || isMobileMenuOpen
-          ? 'bg-white/95 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-white shadow-sm'
+          : 'bg-white'
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between md:h-20">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary-500)]">
-              <span className="text-xl">🐰</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-primary-500)]">
+              <span className="text-lg text-white font-bold">W</span>
             </div>
             <span className="text-xl font-bold text-gray-900">winnie</span>
           </Link>
@@ -103,7 +101,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+                className="text-sm font-medium text-gray-600 transition-colors hover:text-[var(--color-primary-500)]"
               >
                 {link.label}
               </a>
@@ -116,10 +114,10 @@ export default function Header() {
             <div className="relative" ref={langMenuRef}>
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100"
+                className="flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
               >
-                <span>{currentLang.flag}</span>
-                <span className="hidden sm:inline">{currentLang.code.toUpperCase()}</span>
+                <span className="hidden sm:inline">{currentLang.label}</span>
+                <span className="sm:hidden">{currentLang.code.toUpperCase()}</span>
                 <ChevronDown className={cn('h-4 w-4 transition-transform', isLangMenuOpen && 'rotate-180')} />
               </button>
 
@@ -129,7 +127,7 @@ export default function Header() {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="absolute right-0 mt-2 w-40 rounded-xl bg-white py-2 shadow-lg ring-1 ring-black/5"
+                    className="absolute right-0 mt-2 w-36 rounded-xl bg-white py-2 shadow-lg ring-1 ring-black/5"
                   >
                     {languages.map((lang) => (
                       <button
@@ -149,14 +147,27 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            {/* CTA Button */}
-            <a
-              href="#download"
-              onClick={(e) => handleNavClick(e, '#download')}
-              className="hidden rounded-full bg-[var(--color-cta-500)] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[var(--color-cta-600)] sm:inline-flex"
-            >
-              {t('download')}
-            </a>
+            {/* App Store Buttons */}
+            <div className="hidden items-center gap-2 sm:flex">
+              <a
+                href="https://apps.apple.com/app/winnie"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-gray-900 px-3 text-white transition-colors hover:bg-gray-800"
+              >
+                <Apple className="h-4 w-4" />
+                <span className="text-xs font-medium">App Store</span>
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.mywinnie"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-9 items-center gap-1.5 rounded-lg bg-gray-900 px-3 text-white transition-colors hover:bg-gray-800"
+              >
+                <Play className="h-4 w-4" />
+                <span className="text-xs font-medium">Play Store</span>
+              </a>
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -186,7 +197,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="py-3 text-base font-medium text-gray-600 transition-colors hover:text-gray-900"
+                  className="py-3 text-base font-medium text-gray-600 transition-colors hover:text-[var(--color-primary-500)]"
                 >
                   {link.label}
                 </a>
@@ -203,7 +214,7 @@ export default function Header() {
                       key={lang.code}
                       onClick={() => handleLanguageChange(lang.code)}
                       className={cn(
-                        'flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm transition-colors',
+                        'flex items-center gap-1.5 rounded-full px-3 py-2 text-sm transition-colors',
                         lang.code === locale
                           ? 'bg-[var(--color-primary-500)] text-white'
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
@@ -216,13 +227,27 @@ export default function Header() {
                 </div>
               </div>
 
-              <a
-                href="#download"
-                onClick={(e) => handleNavClick(e, '#download')}
-                className="mt-4 rounded-full bg-[var(--color-cta-500)] px-5 py-3 text-center text-base font-semibold text-white"
-              >
-                {t('download')}
-              </a>
+              {/* Mobile App Buttons */}
+              <div className="mt-4 flex gap-2">
+                <a
+                  href="https://apps.apple.com/app/winnie"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 h-12 items-center justify-center gap-2 rounded-xl bg-gray-900 text-white"
+                >
+                  <Apple className="h-5 w-5" />
+                  <span className="text-sm font-medium">App Store</span>
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.mywinnie"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex flex-1 h-12 items-center justify-center gap-2 rounded-xl bg-gray-900 text-white"
+                >
+                  <Play className="h-5 w-5" />
+                  <span className="text-sm font-medium">Play Store</span>
+                </a>
+              </div>
             </nav>
           </motion.div>
         )}

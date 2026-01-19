@@ -2,111 +2,66 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Heart, Bell, Award, TrendingUp, Users, Calendar } from 'lucide-react';
-import { SectionTitle, Button, Card } from '@/components/ui';
+import { UserCheck, Store, CreditCard } from 'lucide-react';
 
-const customerBenefits = [
-  { icon: Heart, key: 0 },
-  { icon: Bell, key: 1 },
-  { icon: Award, key: 2 },
-];
-
-const businessBenefits = [
-  { icon: TrendingUp, key: 0 },
-  { icon: Users, key: 1 },
-  { icon: Calendar, key: 2 },
+const benefits = [
+  { icon: UserCheck, key: 'optimization' },
+  { icon: Store, key: 'expansion' },
+  { icon: CreditCard, key: 'payment' },
 ];
 
 export default function Benefits() {
   const t = useTranslations('benefits');
 
   return (
-    <section id="benefits" className="py-20">
+    <section id="benefits" className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle
-          title="모두를 위한 혜택"
-          subtitle="고객과 사업자 모두 윈-윈하는 플랫폼"
-          align="center"
-        />
-
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
-          {/* Customer Benefits */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl bg-gradient-to-br from-[var(--color-primary-500)] to-[var(--color-primary-700)] p-8 text-white"
-          >
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/20">
-              <span className="text-2xl">👤</span>
-            </div>
-            <h3 className="text-2xl font-bold">{t('customer.title')}</h3>
-            <div className="mt-8 space-y-6">
-              {customerBenefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/20">
-                    <benefit.icon className="h-5 w-5" />
-                  </div>
-                  <p className="text-lg">{t(`customer.items.${benefit.key}`)}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Business Benefits */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl bg-gradient-to-br from-[var(--color-secondary-500)] to-[var(--color-secondary-600)] p-8 text-white"
-          >
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/20">
-              <span className="text-2xl">🏪</span>
-            </div>
-            <h3 className="text-2xl font-bold">{t('business.title')}</h3>
-            <div className="mt-8 space-y-6">
-              {businessBenefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/20">
-                    <benefit.icon className="h-5 w-5" />
-                  </div>
-                  <p className="text-lg">{t(`business.items.${benefit.key}`)}</p>
-                </div>
-              ))}
-            </div>
-            <Button
-              asChild
-              variant="outline"
-              className="mt-8 h-12 rounded-full border-white bg-white px-6 text-[var(--color-secondary-600)] hover:scale-105 hover:bg-white/90"
-            >
-              <a
-                href="https://winnievendor.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                비즈니스 포털 가입하기
-              </a>
-            </Button>
-          </motion.div>
-        </div>
-
-        {/* Payment Info */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12"
+          className="text-center mb-12"
         >
-          <Card variant="default" padding="lg" rounded="lg" className="bg-gray-50 text-center">
-            <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-accent-400)]">
-              <span className="text-3xl">💰</span>
-            </div>
-            <h3 className="text-xl font-bold text-gray-900">직접 지불 방식</h3>
-            <p className="mx-auto mt-2 max-w-xl text-gray-600">
-              위니는 플랫폼 수수료가 없습니다. 고객과 가게 사이의 직접 결제로 투명하고 합리적인 거래를 지원합니다.
-            </p>
-          </Card>
+          <p className="text-sm font-medium text-[var(--color-primary-500)] uppercase tracking-wider mb-2">
+            {t('subtitle')}
+          </p>
+          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            {t('title')}
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            {t('description')}
+          </p>
         </motion.div>
+
+        {/* Benefits Grid - 3 columns */}
+        <div className="grid gap-6 md:grid-cols-3">
+          {benefits.map((benefit, index) => (
+            <motion.div
+              key={benefit.key}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group"
+            >
+              <div className="h-full rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:border-[var(--color-primary-200)] hover:shadow-lg">
+                {/* Icon */}
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary-100)] text-[var(--color-primary-600)] transition-colors group-hover:bg-[var(--color-primary-500)] group-hover:text-white">
+                  <benefit.icon className="h-6 w-6" />
+                </div>
+
+                {/* Content */}
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {t(`items.${benefit.key}.title`)}
+                </h3>
+                <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                  {t(`items.${benefit.key}.description`)}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

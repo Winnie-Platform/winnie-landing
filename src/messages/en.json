@@ -10,66 +10,123 @@
   },
   "nav": {
     "home": "Home",
-    "features": "Features",
-    "forBusiness": "For Business",
+    "features": "User App",
+    "forBusiness": "Vendor App",
     "blog": "Blog",
     "download": "Download"
   },
   "hero": {
     "title": "All the services you imagine in one place!",
-    "subtitle": "Find new favorite stores, get pre-payment discounts, earn reward stamps/points, and make easy reservations",
-    "cta": "Free Download",
-    "ctaSecondary": "Learn More"
+    "subtitle": "Find new favorite stores nearby, use services at discounted prices with prepayment.",
+    "description": "Get reward stamps and points from businesses, make reservations easily... Experience various services at your fingertips."
   },
-  "features": {
-    "title": "What is Winnie?",
-    "search": {
-      "title": "Search Stores/Memberships",
-      "description": "Easily search for stores and membership products near you"
-    },
-    "purchase": {
-      "title": "Purchase/Request Usage",
-      "description": "Conveniently buy and use memberships on your mobile"
-    },
-    "chat": {
-      "title": "Chat Support",
-      "description": "Chat directly with store owners in real-time"
-    },
-    "manage": {
-      "title": "Manage My Memberships",
-      "description": "Check purchase history, usage history, and remaining balance at a glance"
+  "userApp": {
+    "badge": "User App",
+    "tagline": "Enjoy quality service products with prepayment discounts!",
+    "headline": "Ease your everyday with a single device",
+    "appPreview": "App Preview",
+    "ctaButton": "Learn more about User App",
+    "features": {
+      "0": {
+        "title": "Search Stores/Memberships",
+        "description": "Easily search for stores and membership products near you"
+      },
+      "1": {
+        "title": "Purchase/Request Usage",
+        "description": "Conveniently buy and use memberships on your mobile"
+      },
+      "2": {
+        "title": "Chat Support",
+        "description": "Chat directly with store owners in real-time"
+      },
+      "3": {
+        "title": "Manage My Memberships",
+        "description": "Check purchase history, usage history, and remaining balance at a glance"
+      }
     }
   },
-  "benefits": {
-    "customer": {
-      "title": "Customer Benefits",
-      "items": [
-        "Manage favorite stores",
-        "New product notifications",
-        "Earn reward stamps/points"
-      ]
+  "vendorApp": {
+    "badge": "Vendor App",
+    "tagline": "Expand your customer base and leverage the digital platform!",
+    "appPreview": "My Regulars, My Winnie",
+    "featureCard": {
+      "title": "Highlight and spread worth of your store & services",
+      "description": "Reach more customers with digital marketing",
+      "cta": "Learn more about Vendor App"
     },
-    "business": {
-      "title": "Business Benefits",
-      "items": [
-        "Effective marketing",
-        "Expand loyal customers",
-        "Reservation system"
-      ]
+    "features": {
+      "0": {
+        "icon": "📊",
+        "title": "Effective Marketing",
+        "description": "Get exposure to more potential customers through the Winnie platform"
+      },
+      "1": {
+        "icon": "👥",
+        "title": "Customer Management",
+        "description": "Manage customer information and purchase history at a glance"
+      },
+      "2": {
+        "icon": "📅",
+        "title": "Reservation System",
+        "description": "Efficient operations with easy reservation management"
+      }
+    },
+    "ctaButton": "Go to Vendor App"
+  },
+  "benefits": {
+    "subtitle": "WINNIE is",
+    "title": "A mobile solution for a new lifestyle.",
+    "description": "Customers get discounts and rewards, suppliers expand their business.",
+    "items": {
+      "optimization": {
+        "title": "User Optimization",
+        "description": "Manage your favorite stores and services on your phone, and stay updated on new products. Enjoy various discounts and scan reward stamps all in one place."
+      },
+      "expansion": {
+        "title": "Sales Expansion",
+        "description": "Promote your services and products to Winnie platform users, and use proactive marketing tools to expand your loyal customer base. Manage reservations and vouchers all at your fingertips."
+      },
+      "payment": {
+        "title": "Direct Payment",
+        "description": "No service payments or cash transactions occur within the Winnie platform. All transactions are direct between customers and sellers, so you don't need to worry about inspections or anxiety."
+      }
+    }
+  },
+  "news": {
+    "badge": "WHAT'S NEW?!",
+    "title": "Latest News",
+    "readMore": "Read more",
+    "viewAll": "Load more news",
+    "items": {
+      "0": {
+        "title": "Guide to joining Winnie Vendor for business owners",
+        "excerpt": "Register as a seller easily through the Winnie Vendor app"
+      },
+      "1": {
+        "title": "What is a platform and why should small businesses use it?",
+        "excerpt": "Learn about the benefits and usage of digital platforms"
+      },
+      "2": {
+        "title": "The reality of small business marketing and solutions",
+        "excerpt": "Increase sales with effective marketing strategies"
+      }
     }
   },
   "download": {
-    "title": "Get Started Now",
-    "subtitle": "Download free on App Store and Google Play",
+    "title": "See how we can help your business grow with digital marketing platform",
+    "subtitle": "If you want to sell your service products on the Winnie platform, sign up at Winnie Vendor.",
+    "ctaButton": "Go to Vendor App",
     "appStore": "App Store",
     "playStore": "Google Play"
   },
   "footer": {
     "company": "My Winnie Co., Ltd.",
+    "copyright": "© 2026 My Winnie Interaction. All rights reserved.",
     "links": {
+      "faq": "FAQs",
+      "contact": "Contact",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
-    },
-    "copyright": "© 2024 My Winnie. All rights reserved."
+    }
   }
 }

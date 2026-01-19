@@ -10,66 +10,123 @@
   },
   "nav": {
     "home": "홈",
-    "features": "기능",
-    "forBusiness": "비즈니스",
+    "features": "사용자앱",
+    "forBusiness": "판매자앱",
     "blog": "블로그",
     "download": "다운로드"
   },
   "hero": {
     "title": "상상하는 모든 서비스가 한 곳에!",
-    "subtitle": "내 주변에 새로운 단골가게를 찾고, 선 결제 할인 받고, 리워드 스탬프/포인트 받고, 간편 예약까지",
-    "cta": "무료 다운로드",
-    "ctaSecondary": "자세히 보기"
+    "subtitle": "내 주변에 새로운 단골가게를 찾고, 선 결제로 할인 가격 서비스를 이용하세요.",
+    "description": "업체로 부터 리워드 스탬프와 포인트도 받고, 예약마저 간편하게... 내 손안에서 펼쳐지는 다양한 서비스를 체험하세요."
   },
-  "features": {
-    "title": "위니 Winnie는",
-    "search": {
-      "title": "가게/회원권 검색",
-      "description": "내 주변 가게와 회원권 상품을 쉽게 검색하세요"
-    },
-    "purchase": {
-      "title": "구매 신청/사용 요청",
-      "description": "모바일로 간편하게 회원권을 구매하고 사용하세요"
-    },
-    "chat": {
-      "title": "채팅 문의",
-      "description": "가게 사장님과 실시간으로 채팅 상담하세요"
-    },
-    "manage": {
-      "title": "내 회원권 관리",
-      "description": "구매 내역, 사용 내역, 잔여 횟수를 한눈에 확인하세요"
+  "userApp": {
+    "badge": "사용자 앱",
+    "tagline": "선결제 할인으로 양질의 서비스 상품을 누려요!",
+    "headline": "Ease your everyday with a single device",
+    "appPreview": "앱 미리보기",
+    "ctaButton": "사용자 앱 자세히 알아보기",
+    "features": {
+      "0": {
+        "title": "가게/회원권 검색",
+        "description": "내 주변 가게와 회원권 상품을 쉽게 검색하세요"
+      },
+      "1": {
+        "title": "구매 신청/사용 요청",
+        "description": "모바일로 간편하게 회원권을 구매하고 사용하세요"
+      },
+      "2": {
+        "title": "채팅 문의",
+        "description": "가게 사장님과 실시간으로 채팅 상담하세요"
+      },
+      "3": {
+        "title": "내 회원권 관리",
+        "description": "구매 내역, 사용 내역, 잔여 횟수를 한눈에 확인하세요"
+      }
     }
   },
-  "benefits": {
-    "customer": {
-      "title": "고객 혜택",
-      "items": [
-        "즐겨찾기로 단골가게 관리",
-        "신제품 소식 알림",
-        "리워드 스탬프/포인트 적립"
-      ]
+  "vendorApp": {
+    "badge": "판매자 앱",
+    "tagline": "고객층을 확장하고 디지털 플랫폼을 활용해요!",
+    "appPreview": "마이 단골, 마이 위니",
+    "featureCard": {
+      "title": "Highlight and spread worth of your store & services",
+      "description": "디지털 마케팅으로 더 많은 고객에게 다가가세요",
+      "cta": "업체용 앱 자세히 알아보기"
     },
-    "business": {
-      "title": "판매자 혜택",
-      "items": [
-        "효과적인 마케팅",
-        "단골 고객 확장",
-        "예약 시스템 활용"
-      ]
+    "features": {
+      "0": {
+        "icon": "📊",
+        "title": "효과적인 마케팅",
+        "description": "위니 플랫폼을 통해 더 많은 잠재 고객에게 노출되세요"
+      },
+      "1": {
+        "icon": "👥",
+        "title": "단골 고객 관리",
+        "description": "고객 정보와 구매 이력을 한눈에 관리하세요"
+      },
+      "2": {
+        "icon": "📅",
+        "title": "예약 시스템",
+        "description": "간편한 예약 관리로 효율적인 운영이 가능합니다"
+      }
+    },
+    "ctaButton": "판매자용 앱 바로가기"
+  },
+  "benefits": {
+    "subtitle": "위니 WINNIE는",
+    "title": "새로운 라이프스타일을 위한 모바일 솔루션입니다.",
+    "description": "고객은 할인과 리워드를 받고, 공급자는 비즈니스를 확장해요.",
+    "items": {
+      "optimization": {
+        "title": "사용자 최적화",
+        "description": "내 휴대폰에서 가장 즐겨찾는 상점과 서비스를 관리하고, 새로운 제품에 대한 소식을 확인 할 수 있어요. 또한, 한 곳에서 다양한 할인 혜택을 누리고, 다양한 리워드 스탬프도 스캔하세요."
+      },
+      "expansion": {
+        "title": "판매 영역 확장",
+        "description": "위니 플랫폼 사용자에게 내 서비스 및 제품, 상품을 알리고 적극적인 마케팅 도구를 활용하여 단골 고객을 확장 수 있어요. 예약과 상품권도 이용하니 손 안에서 모두 관리가 가능합니다."
+      },
+      "payment": {
+        "title": "직접 지불 방식",
+        "description": "위니 플랫폼 내 서비스 결제 및 현금 및 앱지가 이루어지지 않습니다. 모든 거래는 고객과 판매자의 직접 거래로 이루어지기 때문에 판매 더 이상 점검 주거나 불안감을 갖지 않아도 됩니다."
+      }
+    }
+  },
+  "news": {
+    "badge": "WHAT'S NEW?!",
+    "title": "새로운 소식을 전합니다.",
+    "readMore": "열람하기",
+    "viewAll": "더 많은 소식 불러오기",
+    "items": {
+      "0": {
+        "title": "위니 사장님들을 위한 위니벤더 가입 방법 안내",
+        "excerpt": "위니벤더 앱을 통해 쉽게 판매자로 등록하세요"
+      },
+      "1": {
+        "title": "플랫폼은 무엇이고, 소상공인은 왜 사용해야 할까요?",
+        "excerpt": "디지털 플랫폼의 장점과 활용 방법을 알아보세요"
+      },
+      "2": {
+        "title": "소상공인 마케팅의 현실과 그 해결책",
+        "excerpt": "효과적인 마케팅 전략으로 매출을 높이세요"
+      }
     }
   },
   "download": {
-    "title": "지금 바로 시작하세요",
-    "subtitle": "App Store와 Google Play에서 무료로 다운로드하세요",
+    "title": "See how we can help your business grow with digital marketing platform",
+    "subtitle": "위니 플랫폼에서 서비스 상품을 판매하고 싶으시다면, 위니 벤더에서 가입하세요.",
+    "ctaButton": "판매자용 앱 바로가기",
     "appStore": "App Store",
     "playStore": "Google Play"
   },
   "footer": {
     "company": "(주)마이위니",
+    "copyright": "© 2026 마이위니인터렉션. All rights reserved.",
     "links": {
-      "privacy": "개인정보처리방침",
-      "terms": "이용약관"
-    },
-    "copyright": "© 2024 마이위니. All rights reserved."
+      "faq": "FAQs",
+      "contact": "문의하기",
+      "privacy": "개인정보 처리방침",
+      "terms": "일반계약 이용약관"
+    }
   }
 }

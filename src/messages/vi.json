@@ -10,66 +10,123 @@
   },
   "nav": {
     "home": "Trang chủ",
-    "features": "Tính năng",
-    "forBusiness": "Doanh nghiệp",
+    "features": "Ứng dụng User",
+    "forBusiness": "Ứng dụng Vendor",
     "blog": "Blog",
     "download": "Tải về"
   },
   "hero": {
     "title": "Mọi dịch vụ bạn tưởng tượng đều ở một nơi!",
-    "subtitle": "Tìm cửa hàng quen mới, nhận giảm giá khi thanh toán trước, tích điểm thưởng và đặt lịch dễ dàng",
-    "cta": "Tải miễn phí",
-    "ctaSecondary": "Xem chi tiết"
+    "subtitle": "Tìm cửa hàng quen mới gần bạn, sử dụng dịch vụ với giá ưu đãi khi thanh toán trước.",
+    "description": "Nhận tem thưởng và điểm từ doanh nghiệp, đặt lịch dễ dàng... Trải nghiệm các dịch vụ đa dạng trong tầm tay bạn."
   },
-  "features": {
-    "title": "Winnie là gì?",
-    "search": {
-      "title": "Tìm kiếm cửa hàng/thẻ thành viên",
-      "description": "Dễ dàng tìm kiếm cửa hàng và thẻ thành viên xung quanh bạn"
-    },
-    "purchase": {
-      "title": "Đăng ký mua/Yêu cầu sử dụng",
-      "description": "Mua và sử dụng thẻ thành viên tiện lợi trên di động"
-    },
-    "chat": {
-      "title": "Chat tư vấn",
-      "description": "Chat trực tiếp với chủ cửa hàng"
-    },
-    "manage": {
-      "title": "Quản lý thẻ thành viên",
-      "description": "Xem lịch sử mua, lịch sử sử dụng và số lần còn lại trong một nháy mắt"
+  "userApp": {
+    "badge": "Ứng dụng User",
+    "tagline": "Tận hưởng sản phẩm dịch vụ chất lượng với ưu đãi thanh toán trước!",
+    "headline": "Ease your everyday with a single device",
+    "appPreview": "Xem trước ứng dụng",
+    "ctaButton": "Tìm hiểu thêm về ứng dụng User",
+    "features": {
+      "0": {
+        "title": "Tìm kiếm cửa hàng/thẻ thành viên",
+        "description": "Dễ dàng tìm kiếm cửa hàng và thẻ thành viên xung quanh bạn"
+      },
+      "1": {
+        "title": "Đăng ký mua/Yêu cầu sử dụng",
+        "description": "Mua và sử dụng thẻ thành viên tiện lợi trên di động"
+      },
+      "2": {
+        "title": "Chat tư vấn",
+        "description": "Chat trực tiếp với chủ cửa hàng"
+      },
+      "3": {
+        "title": "Quản lý thẻ thành viên",
+        "description": "Xem lịch sử mua, lịch sử sử dụng và số lần còn lại trong một nháy mắt"
+      }
     }
   },
-  "benefits": {
-    "customer": {
-      "title": "Lợi ích khách hàng",
-      "items": [
-        "Quản lý cửa hàng yêu thích",
-        "Thông báo sản phẩm mới",
-        "Tích điểm thưởng"
-      ]
+  "vendorApp": {
+    "badge": "Ứng dụng Vendor",
+    "tagline": "Mở rộng cơ sở khách hàng và tận dụng nền tảng số!",
+    "appPreview": "Khách quen của tôi, Winnie của tôi",
+    "featureCard": {
+      "title": "Highlight and spread worth of your store & services",
+      "description": "Tiếp cận nhiều khách hàng hơn với tiếp thị số",
+      "cta": "Tìm hiểu thêm về ứng dụng Vendor"
     },
-    "business": {
-      "title": "Lợi ích người bán",
-      "items": [
-        "Marketing hiệu quả",
-        "Mở rộng khách hàng thân thiết",
-        "Sử dụng hệ thống đặt lịch"
-      ]
+    "features": {
+      "0": {
+        "icon": "📊",
+        "title": "Marketing hiệu quả",
+        "description": "Tiếp cận nhiều khách hàng tiềm năng hơn thông qua nền tảng Winnie"
+      },
+      "1": {
+        "icon": "👥",
+        "title": "Quản lý khách hàng",
+        "description": "Quản lý thông tin khách hàng và lịch sử mua hàng trong một cái nhìn"
+      },
+      "2": {
+        "icon": "📅",
+        "title": "Hệ thống đặt lịch",
+        "description": "Vận hành hiệu quả với quản lý đặt lịch dễ dàng"
+      }
+    },
+    "ctaButton": "Đi đến ứng dụng Vendor"
+  },
+  "benefits": {
+    "subtitle": "WINNIE là",
+    "title": "Giải pháp di động cho lối sống mới.",
+    "description": "Khách hàng nhận ưu đãi và phần thưởng, nhà cung cấp mở rộng kinh doanh.",
+    "items": {
+      "optimization": {
+        "title": "Tối ưu hóa người dùng",
+        "description": "Quản lý cửa hàng và dịch vụ yêu thích trên điện thoại, cập nhật sản phẩm mới. Tận hưởng các ưu đãi đa dạng và quét tem thưởng tại một nơi."
+      },
+      "expansion": {
+        "title": "Mở rộng bán hàng",
+        "description": "Quảng bá dịch vụ và sản phẩm đến người dùng nền tảng Winnie, sử dụng công cụ marketing chủ động để mở rộng khách hàng thân thiết. Quản lý đặt lịch và voucher trong tầm tay."
+      },
+      "payment": {
+        "title": "Thanh toán trực tiếp",
+        "description": "Không có thanh toán dịch vụ hoặc giao dịch tiền mặt trong nền tảng Winnie. Mọi giao dịch đều trực tiếp giữa khách hàng và người bán, bạn không cần lo lắng về kiểm tra hay lo âu."
+      }
+    }
+  },
+  "news": {
+    "badge": "CÓ GÌ MỚI?!",
+    "title": "Tin tức mới nhất",
+    "readMore": "Đọc thêm",
+    "viewAll": "Tải thêm tin tức",
+    "items": {
+      "0": {
+        "title": "Hướng dẫn tham gia Winnie Vendor cho chủ doanh nghiệp",
+        "excerpt": "Đăng ký làm người bán dễ dàng qua ứng dụng Winnie Vendor"
+      },
+      "1": {
+        "title": "Nền tảng là gì và tại sao doanh nghiệp nhỏ nên sử dụng?",
+        "excerpt": "Tìm hiểu về lợi ích và cách sử dụng nền tảng số"
+      },
+      "2": {
+        "title": "Thực tế marketing doanh nghiệp nhỏ và giải pháp",
+        "excerpt": "Tăng doanh số với chiến lược marketing hiệu quả"
+      }
     }
   },
   "download": {
-    "title": "Bắt đầu ngay bây giờ",
-    "subtitle": "Tải miễn phí trên App Store và Google Play",
+    "title": "See how we can help your business grow with digital marketing platform",
+    "subtitle": "Nếu bạn muốn bán sản phẩm dịch vụ trên nền tảng Winnie, đăng ký tại Winnie Vendor.",
+    "ctaButton": "Đi đến ứng dụng Vendor",
     "appStore": "App Store",
     "playStore": "Google Play"
   },
   "footer": {
     "company": "My Winnie Co., Ltd.",
+    "copyright": "© 2026 My Winnie Interaction. All rights reserved.",
     "links": {
+      "faq": "FAQs",
+      "contact": "Liên hệ",
       "privacy": "Chính sách bảo mật",
       "terms": "Điều khoản sử dụng"
-    },
-    "copyright": "© 2024 My Winnie. All rights reserved."
+    }
   }
 }

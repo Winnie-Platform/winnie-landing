@@ -11,15 +11,17 @@ const cardVariants = cva('', {
   variants: {
     variant: {
       default: 'bg-white',
-      elevated: 'bg-white shadow-lg hover:shadow-xl transition-shadow',
+      elevated: 'bg-white shadow-lg hover:shadow-xl transition-shadow duration-300',
       outlined: 'bg-white border border-gray-200',
-      glass: 'bg-white/80 backdrop-blur-md border border-white/20',
+      glass: 'bg-white/90 backdrop-blur-md border border-white/30',
+      soft: 'bg-gray-50',
     },
     padding: {
       none: '',
       sm: 'p-4',
       md: 'p-6',
       lg: 'p-8',
+      xl: 'p-10',
     },
     rounded: {
       sm: 'rounded-lg',
@@ -32,7 +34,7 @@ const cardVariants = cva('', {
   defaultVariants: {
     variant: 'default',
     padding: 'md',
-    rounded: 'lg',
+    rounded: 'xl',
   },
 });
 

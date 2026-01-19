@@ -73,7 +73,9 @@
     "title": "Bắt đầu ngay hôm nay",
     "subtitle": "Tải miễn phí từ App Store và Google Play để tận hưởng nhiều ưu đãi thẻ thành viên",
     "appStore": "App Store",
-    "playStore": "Google Play"
+    "playStore": "Google Play",
+    "iosDownload": "Tải cho iOS",
+    "androidDownload": "Tải cho Android"
   },
   "footer": {
     "description": "Nền tảng thẻ thành viên địa phương Việt Nam kết nối khách hàng và cửa hàng.",

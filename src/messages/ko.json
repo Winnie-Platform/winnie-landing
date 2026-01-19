@@ -73,7 +73,9 @@
     "title": "지금 바로 시작하세요",
     "subtitle": "App Store와 Google Play에서 무료로 다운로드하여 다양한 회원권 혜택을 누리세요",
     "appStore": "App Store",
-    "playStore": "Google Play"
+    "playStore": "Google Play",
+    "iosDownload": "iOS 다운로드",
+    "androidDownload": "Android 다운로드"
   },
   "footer": {
     "description": "베트남 현지 회원권 마켓플레이스 플랫폼으로, 고객과 가게를 연결합니다.",

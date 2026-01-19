@@ -73,7 +73,9 @@
     "title": "Get Started Today",
     "subtitle": "Download for free from the App Store and Google Play to enjoy various membership benefits",
     "appStore": "App Store",
-    "playStore": "Google Play"
+    "playStore": "Google Play",
+    "iosDownload": "Download for iOS",
+    "androidDownload": "Download for Android"
   },
   "footer": {
     "description": "A Vietnam local membership marketplace platform connecting customers and stores.",

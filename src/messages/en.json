@@ -12,7 +12,8 @@
     "home": "Home",
     "features": "Features",
     "howItWorks": "How It Works",
-    "blog": "Blog",
+    "ecosystem": "Services",
+    "studio": "Studio",
     "download": "Download",
     "language": "Language"
   },
@@ -20,6 +21,8 @@
     "badge": "Vietnam's #1 Membership Platform",
     "title": "All the services you imagine in one place!",
     "subtitle": "Find new favorite stores nearby, use services at discounted prices with prepayment. Receive reward stamps and points from businesses, and make reservations easily!",
+    "cta": "Free Download",
+    "learnMore": "Learn More",
     "appPreview": "Membership management made easy",
     "secure": "Secure Transaction",
     "stats": {
@@ -28,52 +31,159 @@
       "secure": "Security"
     }
   },
-  "features": {
-    "title": "Features Winnie Offers",
-    "subtitle": "Everything for membership management in one app",
-    "items": {
-      "search": {
-        "title": "Search Stores/Memberships",
-        "description": "Easily search and compare stores and membership products near you"
+  "trustedBy": {
+    "title": "Trusted by local businesses in Vietnam"
+  },
+  "ecosystem": {
+    "badge": "Winnie Ecosystem",
+    "title": "One Platform, Perfect Connection",
+    "subtitle": "Winnie, Winnie Vendor, and Yellow Winnie work together to provide the best experience for both customers and businesses.",
+    "products": {
+      "winnie": {
+        "title": "Winnie App",
+        "description": "Search nearby stores and purchase memberships with our customer mobile app.",
+        "features": {
+          "0": "Search stores/memberships",
+          "1": "Easy payment & usage",
+          "2": "Reward collection"
+        }
       },
-      "purchase": {
-        "title": "Purchase/Use",
-        "description": "Conveniently buy and use memberships on your mobile"
+      "vendor": {
+        "title": "Winnie Vendor",
+        "description": "Manage memberships and communicate with customers through our business website.",
+        "features": {
+          "0": "Membership management",
+          "1": "Customer data analytics",
+          "2": "Reservation system"
+        }
       },
-      "chat": {
-        "title": "Chat Support",
-        "description": "Chat directly with store owners in real-time"
-      },
-      "manage": {
-        "title": "Manage My Memberships",
-        "description": "Check purchase history, usage history, and remaining balance at a glance"
+      "yellow": {
+        "title": "Yellow Winnie",
+        "description": "Register and promote your business on our SME directory.",
+        "features": {
+          "0": "Business profile registration",
+          "1": "Search optimization",
+          "2": "Review management"
+        }
+      }
+    },
+    "learnMore": "Learn More",
+    "cta": {
+      "text": "Join the Winnie ecosystem today",
+      "button": "Get Started"
+    }
+  },
+  "productShowcase": {
+    "winnie": {
+      "badge": "Winnie App",
+      "title": "Everything for membership management in one app",
+      "description": "Search nearby stores, purchase memberships, and manage your usage history with the Winnie app. View reward stamps and points at a glance.",
+      "features": {
+        "0": {
+          "title": "Store/Membership Search",
+          "description": "Easily find nearby stores and membership products based on your location"
+        },
+        "1": {
+          "title": "Easy Purchase & Use",
+          "description": "Purchase conveniently on mobile and use instantly with QR code"
+        },
+        "2": {
+          "title": "Real-time Chat Support",
+          "description": "Chat directly with store owners for inquiries and consultations"
+        },
+        "3": {
+          "title": "Usage History Management",
+          "description": "Check purchase history, usage history, and remaining balance at a glance"
+        }
+      }
+    },
+    "vendor": {
+      "badge": "Winnie Vendor",
+      "title": "All-in-one management platform for businesses",
+      "description": "Register membership products, manage customers, and analyze sales with Winnie Vendor. Handle reservation systems all in one place.",
+      "features": {
+        "0": {
+          "title": "Sales Analytics Dashboard",
+          "description": "Grow your business with real-time sales data and customer analytics"
+        },
+        "1": {
+          "title": "Customer Management",
+          "description": "Systematically manage customer information and purchase history"
+        },
+        "2": {
+          "title": "Reservation System",
+          "description": "Accept online reservations and efficiently manage schedules"
+        },
+        "3": {
+          "title": "Push Notifications",
+          "description": "Instantly deliver promotions and news to customers"
+        }
+      }
+    },
+    "yellow": {
+      "badge": "Yellow Winnie",
+      "title": "Reach more customers with your business",
+      "description": "Register your business on Yellow Winnie SME directory and increase search visibility. Build trust with reviews and ratings to meet new customers.",
+      "features": {
+        "0": {
+          "title": "Business Profile",
+          "description": "Register detailed business information and photos to promote"
+        },
+        "1": {
+          "title": "Search Optimization",
+          "description": "Maximize search visibility with categories and keywords"
+        },
+        "2": {
+          "title": "Reviews & Ratings",
+          "description": "Manage customer reviews and increase credibility"
+        },
+        "3": {
+          "title": "Map Integration",
+          "description": "Get exposed to nearby customers through location-based search"
+        }
       }
     }
   },
-  "howItWorks": {
-    "title": "Simple 3 Steps",
-    "subtitle": "How to start with Winnie",
-    "steps": {
-      "0": {
-        "title": "Download App",
-        "description": "Download the Winnie app for free from the App Store or Google Play"
+  "creativeStudio": {
+    "badge": "Winnie Creative Studio",
+    "title": "Make Your Brand Shine",
+    "subtitle": "Professional content creation services for social media, advertising, and promotion. Winnie Creative Studio is here to help.",
+    "services": {
+      "branding": {
+        "title": "Branding Design",
+        "description": "Build consistent brand identity from logo, business cards, to brand guidelines"
       },
-      "1": {
-        "title": "Explore Stores",
-        "description": "Find stores and discounted membership products near you"
+      "video": {
+        "title": "Video Production",
+        "description": "Create product promotions, brand stories, and social media videos"
       },
-      "2": {
-        "title": "Use Services",
-        "description": "Purchase memberships and enjoy various benefits"
+      "design": {
+        "title": "Graphic Design",
+        "description": "Various print and digital designs including posters, banners, and menus"
+      },
+      "photo": {
+        "title": "Photography",
+        "description": "Professional photography services for products, food, and interiors"
+      },
+      "social": {
+        "title": "SNS Content",
+        "description": "Custom content creation for Instagram, Facebook, and TikTok"
+      },
+      "marketing": {
+        "title": "Marketing Strategy",
+        "description": "Digital marketing strategy development and advertising campaign management"
       }
     },
-    "cta": "Get Started Now"
+    "learnMore": "Learn More",
+    "cta": "Request Consultation"
   },
   "download": {
     "title": "Get Started Today",
     "subtitle": "Download for free from the App Store and Google Play to enjoy various membership benefits",
     "appStore": "App Store",
-    "playStore": "Google Play"
+    "playStore": "Google Play",
+    "iosDownload": "Download for iOS",
+    "androidDownload": "Download for Android"
   },
   "footer": {
     "description": "A Vietnam local membership marketplace platform connecting customers and stores.",

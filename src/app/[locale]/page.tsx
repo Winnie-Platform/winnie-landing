@@ -1,9 +1,12 @@
 import { setRequestLocale } from 'next-intl/server';
 import { Header, Footer } from '@/components/layout';
+import { SmoothScroll } from '@/components/providers';
 import {
-  Hero,
-  Features,
-  HowItWorks,
+  HeroNew,
+  TrustedBy,
+  Ecosystem,
+  ProductShowcase,
+  CreativeStudio,
   Download,
 } from '@/components/sections';
 
@@ -16,15 +19,19 @@ export default async function HomePage({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <>
+    <SmoothScroll>
       <Header />
       <main>
-        <Hero />
-        <Features />
-        <HowItWorks />
+        <HeroNew />
+        <TrustedBy />
+        <Ecosystem />
+        <ProductShowcase productId="winnie" />
+        <ProductShowcase productId="vendor" />
+        <ProductShowcase productId="yellow" />
+        <CreativeStudio />
         <Download />
       </main>
       <Footer />
-    </>
+    </SmoothScroll>
   );
 }

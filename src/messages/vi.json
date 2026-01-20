@@ -12,7 +12,8 @@
     "home": "Trang chủ",
     "features": "Tính năng",
     "howItWorks": "Cách sử dụng",
-    "blog": "Blog",
+    "ecosystem": "Dịch vụ",
+    "studio": "Studio",
     "download": "Tải về",
     "language": "Ngôn ngữ"
   },
@@ -20,6 +21,8 @@
     "badge": "Nền tảng thẻ thành viên số 1 Việt Nam",
     "title": "Mọi dịch vụ bạn tưởng tượng đều ở một nơi!",
     "subtitle": "Tìm cửa hàng quen mới gần bạn, sử dụng dịch vụ với giá ưu đãi khi thanh toán trước. Nhận tem thưởng và điểm từ doanh nghiệp, đặt lịch cũng dễ dàng!",
+    "cta": "Tải miễn phí",
+    "learnMore": "Tìm hiểu thêm",
     "appPreview": "Quản lý thẻ thành viên trở nên dễ dàng",
     "secure": "Giao dịch an toàn",
     "stats": {
@@ -28,52 +31,159 @@
       "secure": "Bảo mật"
     }
   },
-  "features": {
-    "title": "Tính năng Winnie cung cấp",
-    "subtitle": "Mọi thứ để quản lý thẻ thành viên trong một ứng dụng",
-    "items": {
-      "search": {
-        "title": "Tìm kiếm cửa hàng/thẻ thành viên",
-        "description": "Dễ dàng tìm kiếm và so sánh cửa hàng và thẻ thành viên gần bạn"
+  "trustedBy": {
+    "title": "Được tin tưởng bởi các doanh nghiệp địa phương tại Việt Nam"
+  },
+  "ecosystem": {
+    "badge": "Hệ sinh thái Winnie",
+    "title": "Một nền tảng, kết nối hoàn hảo",
+    "subtitle": "Winnie, Winnie Vendor và Yellow Winnie cùng hoạt động để mang đến trải nghiệm tốt nhất cho cả khách hàng và doanh nghiệp.",
+    "products": {
+      "winnie": {
+        "title": "Ứng dụng Winnie",
+        "description": "Tìm kiếm cửa hàng gần đó và mua thẻ thành viên với ứng dụng di động dành cho khách hàng.",
+        "features": {
+          "0": "Tìm kiếm cửa hàng/thẻ thành viên",
+          "1": "Thanh toán & sử dụng dễ dàng",
+          "2": "Tích điểm thưởng"
+        }
       },
-      "purchase": {
-        "title": "Mua/Sử dụng",
-        "description": "Mua và sử dụng thẻ thành viên tiện lợi trên di động"
+      "vendor": {
+        "title": "Winnie Vendor",
+        "description": "Quản lý thẻ thành viên và giao tiếp với khách hàng qua trang web dành cho doanh nghiệp.",
+        "features": {
+          "0": "Quản lý thẻ thành viên",
+          "1": "Phân tích dữ liệu khách hàng",
+          "2": "Hệ thống đặt lịch"
+        }
       },
-      "chat": {
-        "title": "Chat tư vấn",
-        "description": "Chat trực tiếp với chủ cửa hàng theo thời gian thực"
-      },
-      "manage": {
-        "title": "Quản lý thẻ thành viên",
-        "description": "Xem lịch sử mua, lịch sử sử dụng và số lần còn lại trong một cái nhìn"
+      "yellow": {
+        "title": "Yellow Winnie",
+        "description": "Đăng ký và quảng bá doanh nghiệp của bạn trên thư mục SME của chúng tôi.",
+        "features": {
+          "0": "Đăng ký hồ sơ doanh nghiệp",
+          "1": "Tối ưu hóa tìm kiếm",
+          "2": "Quản lý đánh giá"
+        }
+      }
+    },
+    "learnMore": "Tìm hiểu thêm",
+    "cta": {
+      "text": "Tham gia hệ sinh thái Winnie ngay hôm nay",
+      "button": "Bắt đầu"
+    }
+  },
+  "productShowcase": {
+    "winnie": {
+      "badge": "Ứng dụng Winnie",
+      "title": "Mọi thứ để quản lý thẻ thành viên trong một ứng dụng",
+      "description": "Tìm kiếm cửa hàng gần đó, mua thẻ thành viên và quản lý lịch sử sử dụng với ứng dụng Winnie. Xem tem thưởng và điểm trong một cái nhìn.",
+      "features": {
+        "0": {
+          "title": "Tìm kiếm cửa hàng/thẻ thành viên",
+          "description": "Dễ dàng tìm cửa hàng và sản phẩm thẻ thành viên gần bạn dựa trên vị trí"
+        },
+        "1": {
+          "title": "Mua & sử dụng dễ dàng",
+          "description": "Mua thuận tiện trên di động và sử dụng ngay với mã QR"
+        },
+        "2": {
+          "title": "Hỗ trợ chat thời gian thực",
+          "description": "Chat trực tiếp với chủ cửa hàng để hỏi đáp và tư vấn"
+        },
+        "3": {
+          "title": "Quản lý lịch sử sử dụng",
+          "description": "Kiểm tra lịch sử mua hàng, lịch sử sử dụng và số dư còn lại trong một cái nhìn"
+        }
+      }
+    },
+    "vendor": {
+      "badge": "Winnie Vendor",
+      "title": "Nền tảng quản lý tất cả trong một cho doanh nghiệp",
+      "description": "Đăng ký sản phẩm thẻ thành viên, quản lý khách hàng và phân tích doanh số với Winnie Vendor. Xử lý hệ thống đặt lịch tất cả trong một nơi.",
+      "features": {
+        "0": {
+          "title": "Bảng phân tích doanh số",
+          "description": "Phát triển doanh nghiệp với dữ liệu bán hàng thời gian thực và phân tích khách hàng"
+        },
+        "1": {
+          "title": "Quản lý khách hàng",
+          "description": "Quản lý có hệ thống thông tin khách hàng và lịch sử mua hàng"
+        },
+        "2": {
+          "title": "Hệ thống đặt lịch",
+          "description": "Nhận đặt lịch trực tuyến và quản lý lịch trình hiệu quả"
+        },
+        "3": {
+          "title": "Thông báo đẩy",
+          "description": "Gửi ngay khuyến mãi và tin tức đến khách hàng"
+        }
+      }
+    },
+    "yellow": {
+      "badge": "Yellow Winnie",
+      "title": "Tiếp cận nhiều khách hàng hơn với doanh nghiệp của bạn",
+      "description": "Đăng ký doanh nghiệp trên thư mục SME Yellow Winnie và tăng khả năng hiển thị tìm kiếm. Xây dựng niềm tin với đánh giá và xếp hạng để gặp gỡ khách hàng mới.",
+      "features": {
+        "0": {
+          "title": "Hồ sơ doanh nghiệp",
+          "description": "Đăng ký thông tin doanh nghiệp chi tiết và ảnh để quảng bá"
+        },
+        "1": {
+          "title": "Tối ưu hóa tìm kiếm",
+          "description": "Tối đa hóa khả năng hiển thị tìm kiếm với danh mục và từ khóa"
+        },
+        "2": {
+          "title": "Đánh giá & xếp hạng",
+          "description": "Quản lý đánh giá của khách hàng và tăng độ tin cậy"
+        },
+        "3": {
+          "title": "Tích hợp bản đồ",
+          "description": "Hiển thị với khách hàng gần đó thông qua tìm kiếm dựa trên vị trí"
+        }
       }
     }
   },
-  "howItWorks": {
-    "title": "3 bước đơn giản",
-    "subtitle": "Cách bắt đầu với Winnie",
-    "steps": {
-      "0": {
-        "title": "Tải ứng dụng",
-        "description": "Tải miễn phí ứng dụng Winnie từ App Store hoặc Google Play"
+  "creativeStudio": {
+    "badge": "Winnie Creative Studio",
+    "title": "Làm thương hiệu của bạn tỏa sáng",
+    "subtitle": "Dịch vụ sản xuất nội dung chuyên nghiệp cho mạng xã hội, quảng cáo và khuyến mãi. Winnie Creative Studio sẵn sàng hỗ trợ.",
+    "services": {
+      "branding": {
+        "title": "Thiết kế thương hiệu",
+        "description": "Xây dựng nhận diện thương hiệu nhất quán từ logo, danh thiếp đến hướng dẫn thương hiệu"
       },
-      "1": {
-        "title": "Khám phá cửa hàng",
-        "description": "Tìm cửa hàng và thẻ thành viên ưu đãi gần bạn"
+      "video": {
+        "title": "Sản xuất video",
+        "description": "Tạo video quảng cáo sản phẩm, câu chuyện thương hiệu và video mạng xã hội"
       },
-      "2": {
-        "title": "Sử dụng dịch vụ",
-        "description": "Mua thẻ thành viên và tận hưởng nhiều ưu đãi"
+      "design": {
+        "title": "Thiết kế đồ họa",
+        "description": "Các thiết kế in ấn và kỹ thuật số đa dạng bao gồm poster, banner và menu"
+      },
+      "photo": {
+        "title": "Chụp ảnh",
+        "description": "Dịch vụ chụp ảnh chuyên nghiệp cho sản phẩm, thực phẩm và nội thất"
+      },
+      "social": {
+        "title": "Nội dung SNS",
+        "description": "Tạo nội dung tùy chỉnh cho Instagram, Facebook và TikTok"
+      },
+      "marketing": {
+        "title": "Chiến lược marketing",
+        "description": "Phát triển chiến lược marketing kỹ thuật số và quản lý chiến dịch quảng cáo"
       }
     },
-    "cta": "Bắt đầu ngay"
+    "learnMore": "Tìm hiểu thêm",
+    "cta": "Yêu cầu tư vấn"
   },
   "download": {
     "title": "Bắt đầu ngay hôm nay",
     "subtitle": "Tải miễn phí từ App Store và Google Play để tận hưởng nhiều ưu đãi thẻ thành viên",
     "appStore": "App Store",
-    "playStore": "Google Play"
+    "playStore": "Google Play",
+    "iosDownload": "Tải cho iOS",
+    "androidDownload": "Tải cho Android"
   },
   "footer": {
     "description": "Nền tảng thẻ thành viên địa phương Việt Nam kết nối khách hàng và cửa hàng.",

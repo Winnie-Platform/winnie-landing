@@ -15,7 +15,14 @@
     "ecosystem": "Services",
     "studio": "Studio",
     "download": "Download",
-    "language": "Language"
+    "language": "Language",
+    "partnership": "Partnership",
+    "services": {
+      "title": "Services",
+      "winnie": "Winnie App",
+      "vendor": "Winnie Vendor",
+      "yellow": "Yellow Winnie"
+    }
   },
   "hero": {
     "badge": "Vietnam's #1 Membership Platform",
@@ -280,6 +287,47 @@
       "contact": {
         "title": "Privacy Officer",
         "content": "The Company designates a privacy officer to oversee personal information processing and handle user complaints and damage relief.\n\n• Privacy Officer: My Winnie Co., Ltd. CEO\n• Contact: support@mywinnie.com"
+      }
+    }
+  },
+  "partnership": {
+    "meta": {
+      "title": "Partnership Inquiry - Winnie",
+      "description": "Grow with Winnie. Partnership inquiries welcome."
+    },
+    "badge": "Partnership",
+    "title": "Growing Together as Partners",
+    "subtitle": "Grow your business with Winnie. We create new value through various partnership opportunities.",
+    "contact": {
+      "title": "Contact Us",
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Phone"
+      },
+      "location": {
+        "title": "Location"
+      }
+    },
+    "form": {
+      "company": "Company Name",
+      "name": "Contact Person",
+      "email": "Email",
+      "phone": "Phone Number",
+      "partnershipType": "Partnership Type",
+      "selectType": "Select partnership type",
+      "types": {
+        "business": "Business Partnership",
+        "marketing": "Marketing Partnership",
+        "technology": "Technology Partnership",
+        "other": "Other"
+      },
+      "message": "Message",
+      "submit": "Submit Inquiry",
+      "success": {
+        "title": "Inquiry Received",
+        "message": "Our team will contact you shortly. Thank you."
       }
     }
   }

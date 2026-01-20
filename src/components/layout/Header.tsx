@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Download } from 'lucide-react';
+import { Menu, X, ChevronDown, Download, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const languages = [
@@ -23,7 +23,9 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const langMenuRef = useRef<HTMLDivElement>(null);
+  const servicesMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +39,9 @@ export default function Header() {
     const handleClickOutside = (event: MouseEvent) => {
       if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
         setIsLangMenuOpen(false);
+      }
+      if (servicesMenuRef.current && !servicesMenuRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -69,20 +74,44 @@ export default function Header() {
     if (href.startsWith('#')) {
       e.preventDefault();
       setIsMobileMenuOpen(false);
+      setIsServicesOpen(false);
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
       setIsMobileMenuOpen(false);
+      setIsServicesOpen(false);
     }
   };
 
   const currentLang = languages.find((l) => l.code === locale) || languages[0];
 
+  const services = [
+    {
+      id: 'winnie',
+      href: '#winnie',
+      label: t('services.winnie'),
+      external: false
+    },
+    {
+      id: 'vendor',
+      href: 'https://vendor.mywinnie.com',
+      label: t('services.vendor'),
+      external: true
+    },
+    {
+      id: 'yellow',
+      href: 'https://yellow.mywinnie.com',
+      label: t('services.yellow'),
+      external: true
+    },
+  ];
+
   const navLinks = [
-    { href: '#features', label: t('features') },
-    { href: '#how-it-works', label: t('howItWorks') },
+    { href: '#ecosystem', label: t('ecosystem') },
+    { href: '#creative-studio', label: t('studio') },
+    { href: `/${locale}/partnership`, label: t('partnership') },
   ];
 
   return (
@@ -106,6 +135,43 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-1 lg:flex">
+            {/* Services Dropdown */}
+            <div className="relative" ref={servicesMenuRef}>
+              <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-600 rounded-full transition-colors hover:text-gray-900 hover:bg-gray-100"
+              >
+                {t('services.title')}
+                <ChevronDown className={cn('h-4 w-4 transition-transform', isServicesOpen && 'rotate-180')} />
+              </button>
+
+              <AnimatePresence>
+                {isServicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute left-0 mt-2 w-56 rounded-2xl bg-white py-2 shadow-xl ring-1 ring-black/5"
+                  >
+                    {services.map((service) => (
+                      <a
+                        key={service.id}
+                        href={service.href}
+                        onClick={(e) => !service.external && handleNavClick(e, service.href)}
+                        target={service.external ? '_blank' : undefined}
+                        rel={service.external ? 'noopener noreferrer' : undefined}
+                        className="flex items-center justify-between px-4 py-3 text-sm text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                      >
+                        <span>{service.label}</span>
+                        {service.external && <ExternalLink className="h-3.5 w-3.5 text-gray-400" />}
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -198,6 +264,30 @@ export default function Header() {
               className="flex flex-col p-6 h-full overflow-y-auto safe-area-bottom"
             >
               <div className="space-y-1">
+                {/* Services Section */}
+                <div className="pb-4 border-b border-gray-100">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+                    {t('services.title')}
+                  </p>
+                  {services.map((service, index) => (
+                    <motion.a
+                      key={service.id}
+                      href={service.href}
+                      onClick={(e) => !service.external && handleNavClick(e, service.href)}
+                      target={service.external ? '_blank' : undefined}
+                      rel={service.external ? 'noopener noreferrer' : undefined}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05 }}
+                      className="flex items-center justify-between py-3 text-base font-medium text-gray-700"
+                    >
+                      <span>{service.label}</span>
+                      {service.external && <ExternalLink className="h-4 w-4 text-gray-400" />}
+                    </motion.a>
+                  ))}
+                </div>
+
+                {/* Other Nav Links */}
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.href}
@@ -205,7 +295,7 @@ export default function Header() {
                     onClick={(e) => handleNavClick(e, link.href)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + index * 0.05 }}
+                    transition={{ delay: 0.25 + index * 0.05 }}
                     className="flex items-center py-4 text-lg font-medium text-gray-900 border-b border-gray-100"
                   >
                     {link.label}

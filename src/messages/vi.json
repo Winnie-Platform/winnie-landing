@@ -15,7 +15,14 @@
     "ecosystem": "Dịch vụ",
     "studio": "Studio",
     "download": "Tải về",
-    "language": "Ngôn ngữ"
+    "language": "Ngôn ngữ",
+    "partnership": "Hợp tác",
+    "services": {
+      "title": "Dịch vụ",
+      "winnie": "Ứng dụng Winnie",
+      "vendor": "Winnie Vendor",
+      "yellow": "Yellow Winnie"
+    }
   },
   "hero": {
     "badge": "Nền tảng thẻ thành viên số 1 Việt Nam",
@@ -280,6 +287,47 @@
       "contact": {
         "title": "Người phụ trách bảo mật",
         "content": "Công ty chỉ định người phụ trách bảo mật để giám sát xử lý thông tin cá nhân và xử lý khiếu nại cũng như khắc phục thiệt hại cho người dùng.\n\n• Người phụ trách bảo mật: Giám đốc My Winnie Co., Ltd.\n• Liên hệ: support@mywinnie.com"
+      }
+    }
+  },
+  "partnership": {
+    "meta": {
+      "title": "Yêu cầu hợp tác - Winnie",
+      "description": "Phát triển cùng Winnie. Yêu cầu hợp tác."
+    },
+    "badge": "Hợp tác",
+    "title": "Cùng phát triển như đối tác",
+    "subtitle": "Phát triển doanh nghiệp của bạn cùng Winnie. Chúng tôi tạo ra giá trị mới thông qua các cơ hội hợp tác đa dạng.",
+    "contact": {
+      "title": "Liên hệ",
+      "email": {
+        "title": "Email"
+      },
+      "phone": {
+        "title": "Điện thoại"
+      },
+      "location": {
+        "title": "Địa chỉ"
+      }
+    },
+    "form": {
+      "company": "Tên công ty",
+      "name": "Người liên hệ",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "partnershipType": "Loại hợp tác",
+      "selectType": "Chọn loại hợp tác",
+      "types": {
+        "business": "Hợp tác kinh doanh",
+        "marketing": "Hợp tác marketing",
+        "technology": "Hợp tác công nghệ",
+        "other": "Khác"
+      },
+      "message": "Nội dung",
+      "submit": "Gửi yêu cầu",
+      "success": {
+        "title": "Đã nhận yêu cầu",
+        "message": "Đội ngũ của chúng tôi sẽ liên hệ với bạn sớm. Cảm ơn bạn."
       }
     }
   }

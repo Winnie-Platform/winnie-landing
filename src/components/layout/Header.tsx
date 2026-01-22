@@ -248,101 +248,81 @@ export default function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 bottom-0 z-[100] bg-white lg:hidden overflow-hidden"
-          >
-            <motion.nav
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2, delay: 0.1 }}
-              className="flex flex-col p-6 h-full overflow-y-auto safe-area-bottom"
-            >
-              <div className="space-y-1">
-                {/* Services Section */}
-                <div className="pb-4 border-b border-gray-100">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
-                    {t('services.title')}
-                  </p>
-                  {services.map((service, index) => (
-                    <motion.a
-                      key={service.id}
-                      href={service.href}
-                      onClick={(e) => !service.external && handleNavClick(e, service.href)}
-                      target={service.external ? '_blank' : undefined}
-                      rel={service.external ? 'noopener noreferrer' : undefined}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + index * 0.05 }}
-                      className="flex items-center justify-between py-3 text-base font-medium text-gray-700"
-                    >
-                      <span>{service.label}</span>
-                      {service.external && <ExternalLink className="h-4 w-4 text-gray-400" />}
-                    </motion.a>
-                  ))}
-                </div>
-
-                {/* Other Nav Links */}
-                {navLinks.map((link, index) => (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.25 + index * 0.05 }}
-                    className="flex items-center py-4 text-lg font-medium text-gray-900 border-b border-gray-100"
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 top-16 z-[9999] bg-white lg:hidden">
+          <nav className="flex flex-col p-6 h-full overflow-y-auto safe-area-bottom">
+            <div className="space-y-1">
+              {/* Services Section */}
+              <div className="pb-4 border-b border-gray-100">
+                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">
+                  {t('services.title')}
+                </p>
+                {services.map((service) => (
+                  <a
+                    key={service.id}
+                    href={service.href}
+                    onClick={(e) => !service.external && handleNavClick(e, service.href)}
+                    target={service.external ? '_blank' : undefined}
+                    rel={service.external ? 'noopener noreferrer' : undefined}
+                    className="flex items-center justify-between py-3 text-base font-medium text-gray-700"
                   >
-                    {link.label}
-                  </motion.a>
+                    <span>{service.label}</span>
+                    {service.external && <ExternalLink className="h-4 w-4 text-gray-400" />}
+                  </a>
                 ))}
               </div>
 
-              {/* Mobile Language Selector */}
-              <div className="mt-8">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400">
-                  {t('language')}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => handleLanguageChange(lang.code)}
-                      className={cn(
-                        'flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-all',
-                        lang.code === locale
-                          ? 'bg-[var(--color-brand-600)] text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      )}
-                    >
-                      <span>{lang.flag}</span>
-                      <span>{lang.label}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Mobile CTA */}
-              <div className="mt-auto pt-6">
+              {/* Other Nav Links */}
+              {navLinks.map((link) => (
                 <a
-                  href="#download"
-                  onClick={(e) => handleNavClick(e, '#download')}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-brand-600)] px-6 py-4 text-base font-medium text-white shadow-lg"
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="flex items-center py-4 text-lg font-medium text-gray-900 border-b border-gray-100"
                 >
-                  <Download className="h-5 w-5" />
-                  <span>{t('download')}</span>
+                  {link.label}
                 </a>
+              ))}
+            </div>
+
+            {/* Mobile Language Selector */}
+            <div className="mt-8">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                {t('language')}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => handleLanguageChange(lang.code)}
+                    className={cn(
+                      'flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-all',
+                      lang.code === locale
+                        ? 'bg-[var(--color-brand-600)] text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    )}
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.label}</span>
+                  </button>
+                ))}
               </div>
-            </motion.nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+
+            {/* Mobile CTA */}
+            <div className="mt-auto pt-6">
+              <a
+                href="#download"
+                onClick={(e) => handleNavClick(e, '#download')}
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-brand-600)] px-6 py-4 text-base font-medium text-white shadow-lg"
+              >
+                <Download className="h-5 w-5" />
+                <span>{t('download')}</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

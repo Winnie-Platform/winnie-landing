@@ -81,7 +81,7 @@ export default function UserAppSection() {
               {/* Download Buttons */}
               <div className="mt-6 flex gap-3">
                 <a
-                  href="https://apps.apple.com/app/winnie"
+                  href="https://apps.apple.com/vn/app/winnie/id6737789682?l"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gray-900 px-4 py-3 text-white hover:bg-gray-800 transition-colors"
@@ -90,7 +90,7 @@ export default function UserAppSection() {
                   <span className="text-sm font-medium">App Store</span>
                 </a>
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.mywinnie"
+                  href="https://play.google.com/store/apps/details?id=com.winnie.userapp.v1&pcampaignid"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-gray-900 px-4 py-3 text-white hover:bg-gray-800 transition-colors"

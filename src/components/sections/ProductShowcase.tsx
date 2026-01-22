@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -23,6 +24,7 @@ const productConfig = {
     gradientFrom: 'var(--color-brand-500)',
     gradientTo: 'var(--color-brand-700)',
     icons: [Search, ShoppingCart, MessageCircle, CreditCard],
+    mockupImage: '/images/winnieapp.svg',
   },
   vendor: {
     color: '#F97316',
@@ -30,6 +32,7 @@ const productConfig = {
     gradientFrom: '#FB923C',
     gradientTo: '#EA580C',
     icons: [BarChart3, Users, Calendar, Bell],
+    mockupImage: '/images/winnievendor.svg',
   },
   yellow: {
     color: '#EAB308',
@@ -37,6 +40,7 @@ const productConfig = {
     gradientFrom: '#FACC15',
     gradientTo: '#CA8A04',
     icons: [MapPin, Building2, Star, Filter],
+    mockupImage: '/images/yellowwinnie.svg',
   },
 };
 
@@ -186,7 +190,7 @@ export default function ProductShowcase({ productId }: ProductShowcaseProps) {
 
           {/* Image/Mockup */}
           <div ref={imageRef} className={isReversed ? 'lg:order-1' : ''}>
-            <div className="relative">
+            <div className="relative flex justify-center">
               {/* Glow */}
               <div
                 className="absolute inset-0 blur-3xl opacity-30 scale-90"
@@ -196,58 +200,16 @@ export default function ProductShowcase({ productId }: ProductShowcaseProps) {
                 }}
               />
 
-              {/* Device Frame */}
-              <div className="relative bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl mx-auto max-w-[280px] lg:max-w-[320px]">
-                <div
-                  className="w-full aspect-[9/19.5] rounded-[2rem]"
-                  style={{
-                    background: `linear-gradient(180deg, ${config.bgColor} 0%, white 100%)`,
-                  }}
-                >
-                  {/* App UI Mockup */}
-                  <div className="h-full p-4 pt-8 pb-4 flex flex-col">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center"
-                        style={{ backgroundColor: config.color }}
-                      >
-                        <span className="text-white font-bold text-sm">
-                          {productId === 'winnie' ? 'W' : productId === 'vendor' ? 'V' : 'Y'}
-                        </span>
-                      </div>
-                      <div className="flex gap-2">
-                        <div className="w-7 h-7 rounded-full bg-gray-100" />
-                        <div className="w-7 h-7 rounded-full bg-gray-100" />
-                      </div>
-                    </div>
-
-                    {/* Content placeholder */}
-                    <div className="flex-1 space-y-3 overflow-hidden">
-                      <div className="h-20 rounded-xl bg-white shadow-sm" />
-                      <div className="h-14 rounded-lg bg-white shadow-sm" />
-                      <div className="h-14 rounded-lg bg-white shadow-sm" />
-                      <div className="h-16 rounded-xl" style={{ backgroundColor: `${config.color}15` }} />
-                    </div>
-
-                    {/* Bottom nav */}
-                    <div className="flex justify-around pt-3 border-t border-gray-100 mt-3">
-                      {[1, 2, 3, 4].map((i) => (
-                        <div
-                          key={i}
-                          className="w-5 h-5 rounded-md"
-                          style={{
-                            backgroundColor: i === 1 ? config.color : '#E5E7EB',
-                            opacity: i === 1 ? 1 : 0.5,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Notch */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-900 rounded-full" />
+              {/* Phone Mockup Image */}
+              <div className="relative mx-auto max-w-[280px] lg:max-w-[320px]">
+                <Image
+                  src={config.mockupImage}
+                  alt={`${productId} app mockup`}
+                  width={320}
+                  height={640}
+                  className="w-full h-auto drop-shadow-2xl"
+                  priority={productId === 'winnie'}
+                />
               </div>
 
               {/* Floating elements */}

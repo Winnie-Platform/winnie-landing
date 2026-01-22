@@ -56,7 +56,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
               <a
-                href="https://apps.apple.com/app/winnie"
+                href="https://apps.apple.com/vn/app/winnie/id6737789682?l"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-gray-900 px-6 py-4 text-white transition-all hover:bg-gray-800 hover:shadow-xl active:scale-[0.98]"
@@ -68,7 +68,7 @@ export default function Hero() {
                 </div>
               </a>
               <a
-                href="https://play.google.com/store/apps/details?id=com.mywinnie"
+                href="https://play.google.com/store/apps/details?id=com.winnie.userapp.v1&pcampaignid"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-gray-900 px-6 py-4 text-white transition-all hover:bg-gray-800 hover:shadow-xl active:scale-[0.98]"

@@ -123,12 +123,12 @@ export const metadata: Metadata = {
   // App Links
   appLinks: {
     ios: {
-      url: 'https://apps.apple.com/app/winnie',
+      url: 'https://apps.apple.com/vn/app/winnie/id6737789682?l',
       app_store_id: 'YOUR_APP_STORE_ID',
     },
     android: {
-      package: 'com.mywinnie',
-      url: 'https://play.google.com/store/apps/details?id=com.mywinnie',
+      package: 'com.winnie.userapp.v1',
+      url: 'https://play.google.com/store/apps/details?id=com.winnie.userapp.v1&pcampaignid',
     },
     web: {
       url: 'https://mywinnie.com',

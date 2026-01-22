@@ -46,8 +46,8 @@ export const mobileAppSchema = {
     '내 회원권 관리 (My Membership Management)',
   ],
   downloadUrl: [
-    'https://apps.apple.com/app/winnie',
-    'https://play.google.com/store/apps/details?id=com.mywinnie',
+    'https://apps.apple.com/vn/app/winnie/id6737789682?l',
+    'https://play.google.com/store/apps/details?id=com.winnie.userapp.v1&pcampaignid',
   ],
   inLanguage: ['ko', 'vi', 'en'],
   countriesSupported: ['VN', 'KR'],

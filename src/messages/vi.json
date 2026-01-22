@@ -48,10 +48,10 @@
     "products": {
       "winnie": {
         "title": "Ứng dụng Winnie",
-        "description": "Tìm kiếm cửa hàng gần đó và mua thẻ thành viên với ứng dụng di động dành cho khách hàng.",
+        "description": "Tìm kiếm cửa hàng gần đó và quản lý thẻ thành viên với ứng dụng di động dành cho khách hàng.",
         "features": {
           "0": "Tìm kiếm cửa hàng/thẻ thành viên",
-          "1": "Thanh toán & sử dụng dễ dàng",
+          "1": "Theo dõi tình trạng sử dụng",
           "2": "Tích điểm thưởng"
         }
       },
@@ -91,8 +91,8 @@
           "description": "Dễ dàng tìm cửa hàng và sản phẩm thẻ thành viên gần bạn dựa trên vị trí"
         },
         "1": {
-          "title": "Mua & sử dụng dễ dàng",
-          "description": "Mua thuận tiện trên di động và sử dụng ngay với mã QR"
+          "title": "Theo dõi tình trạng sử dụng",
+          "description": "Theo dõi thuận tiện tình trạng sử dụng và số dư còn lại của thẻ thành viên"
         },
         "2": {
           "title": "Hỗ trợ chat thời gian thực",
@@ -286,7 +286,7 @@
       },
       "contact": {
         "title": "Người phụ trách bảo mật",
-        "content": "Công ty chỉ định người phụ trách bảo mật để giám sát xử lý thông tin cá nhân và xử lý khiếu nại cũng như khắc phục thiệt hại cho người dùng.\n\n• Người phụ trách bảo mật: Giám đốc My Winnie Co., Ltd.\n• Liên hệ: support@mywinnie.com"
+        "content": "Công ty chỉ định người phụ trách bảo mật để giám sát xử lý thông tin cá nhân và xử lý khiếu nại cũng như khắc phục thiệt hại cho người dùng.\n\n• Người phụ trách bảo mật: Giám đốc My Winnie Co., Ltd.\n• Liên hệ: winnie@yeowubie.com"
       }
     }
   },

@@ -3,7 +3,6 @@ import { Header, Footer } from '@/components/layout';
 import { SmoothScroll } from '@/components/providers';
 import {
   HeroNew,
-  TrustedBy,
   Ecosystem,
   ProductShowcase,
   CreativeStudio,
@@ -23,7 +22,6 @@ export default async function HomePage({ params }: Props) {
       <Header />
       <main>
         <HeroNew />
-        <TrustedBy />
         <Ecosystem />
         <ProductShowcase productId="winnie" />
         <ProductShowcase productId="vendor" />

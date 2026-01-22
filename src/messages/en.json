@@ -48,10 +48,10 @@
     "products": {
       "winnie": {
         "title": "Winnie App",
-        "description": "Search nearby stores and purchase memberships with our customer mobile app.",
+        "description": "Search nearby stores and manage your memberships with our customer mobile app.",
         "features": {
           "0": "Search stores/memberships",
-          "1": "Easy payment & usage",
+          "1": "Usage status tracking",
           "2": "Reward collection"
         }
       },
@@ -91,8 +91,8 @@
           "description": "Easily find nearby stores and membership products based on your location"
         },
         "1": {
-          "title": "Easy Purchase & Use",
-          "description": "Purchase conveniently on mobile and use instantly with QR code"
+          "title": "Usage Status Tracking",
+          "description": "Conveniently track your membership usage status and remaining balance"
         },
         "2": {
           "title": "Real-time Chat Support",
@@ -286,7 +286,7 @@
       },
       "contact": {
         "title": "Privacy Officer",
-        "content": "The Company designates a privacy officer to oversee personal information processing and handle user complaints and damage relief.\n\n• Privacy Officer: My Winnie Co., Ltd. CEO\n• Contact: support@mywinnie.com"
+        "content": "The Company designates a privacy officer to oversee personal information processing and handle user complaints and damage relief.\n\n• Privacy Officer: My Winnie Co., Ltd. CEO\n• Contact: winnie@yeowubie.com"
       }
     }
   },

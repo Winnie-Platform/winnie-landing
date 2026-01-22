@@ -1,13 +1,20 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const appImages = [
+  { id: 'winnie', src: '/images/winnieapp.svg', label: 'Winnie' },
+  { id: 'vendor', src: '/images/winnievendor.svg', label: 'Winnie Vendor' },
+  { id: 'yellow', src: '/images/yellowwinnie.svg', label: 'Yellow Winnie' },
+];
 
 export default function HeroNew() {
   const t = useTranslations('hero');
@@ -16,6 +23,8 @@ export default function HeroNew() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -86,6 +95,25 @@ export default function HeroNew() {
 
     return () => ctx.revert();
   }, []);
+
+  // Mobile swipe navigation
+  const scrollToIndex = (index: number) => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const itemWidth = container.scrollWidth / appImages.length;
+      container.scrollTo({ left: itemWidth * index, behavior: 'smooth' });
+      setActiveIndex(index);
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const itemWidth = container.scrollWidth / appImages.length;
+      const newIndex = Math.round(container.scrollLeft / itemWidth);
+      setActiveIndex(newIndex);
+    }
+  };
 
   return (
     <section
@@ -177,56 +205,116 @@ export default function HeroNew() {
           </motion.div>
         </div>
 
-        {/* Phone Mockups */}
+        {/* App Images - Desktop */}
         <motion.div
           ref={phoneRef}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative mt-16 lg:mt-20 flex justify-center items-end gap-4"
+          className="relative mt-16 lg:mt-20 hidden md:flex justify-center items-end gap-4"
         >
-          {/* Main Phone */}
+          {/* Main App - Winnie */}
           <div className="relative z-10">
-            <div className="relative w-64 sm:w-72 lg:w-80 bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
-              <div className="w-full aspect-[9/19] bg-gradient-to-br from-[var(--color-brand-100)] to-white rounded-[2.5rem] overflow-hidden">
-                <div className="h-full flex flex-col items-center justify-center p-6 text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-[var(--color-brand-600)] flex items-center justify-center shadow-lg mb-4">
-                    <span className="text-2xl font-bold text-white">W</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900">Winnie</h3>
-                  <p className="text-sm text-gray-500 mt-1">{t('appPreview')}</p>
-                </div>
-              </div>
-              <div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-full" />
+            <div className="relative w-64 sm:w-72 lg:w-80 aspect-[9/19] rounded-[2.5rem] overflow-hidden shadow-2xl">
+              <Image
+                src="/images/winnieapp.svg"
+                alt="Winnie App"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
 
-          {/* Left Phone (smaller, behind) */}
-          <div className="absolute left-[5%] sm:left-[10%] lg:left-[15%] bottom-8 -z-0 opacity-60 scale-75 blur-[1px]">
-            <div className="relative w-56 sm:w-64 bg-gray-800 rounded-[2.5rem] p-2.5 shadow-xl">
-              <div className="w-full aspect-[9/19] bg-gradient-to-br from-orange-100 to-white rounded-[2rem] overflow-hidden">
-                <div className="h-full flex flex-col items-center justify-center p-4 text-center">
-                  <div className="w-12 h-12 rounded-xl bg-orange-500 flex items-center justify-center shadow mb-3">
-                    <span className="text-lg font-bold text-white">V</span>
-                  </div>
-                  <h3 className="text-sm font-bold text-gray-900">Vendor</h3>
-                </div>
-              </div>
+          {/* Left App - Vendor */}
+          <div className="absolute left-[5%] sm:left-[10%] lg:left-[15%] bottom-8 -z-0 opacity-70 scale-75">
+            <div className="relative w-56 sm:w-64 aspect-[9/19] rounded-[2rem] overflow-hidden shadow-xl">
+              <Image
+                src="/images/winnievendor.svg"
+                alt="Winnie Vendor"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 
-          {/* Right Phone (smaller, behind) */}
-          <div className="absolute right-[5%] sm:right-[10%] lg:right-[15%] bottom-8 -z-0 opacity-60 scale-75 blur-[1px]">
-            <div className="relative w-56 sm:w-64 bg-gray-800 rounded-[2.5rem] p-2.5 shadow-xl">
-              <div className="w-full aspect-[9/19] bg-gradient-to-br from-yellow-100 to-white rounded-[2rem] overflow-hidden">
-                <div className="h-full flex flex-col items-center justify-center p-4 text-center">
-                  <div className="w-12 h-12 rounded-xl bg-yellow-500 flex items-center justify-center shadow mb-3">
-                    <span className="text-lg font-bold text-white">Y</span>
-                  </div>
-                  <h3 className="text-sm font-bold text-gray-900">Yellow</h3>
-                </div>
-              </div>
+          {/* Right App - Yellow Winnie */}
+          <div className="absolute right-[5%] sm:right-[10%] lg:right-[15%] bottom-8 -z-0 opacity-70 scale-75">
+            <div className="relative w-56 sm:w-64 aspect-[9/19] rounded-[2rem] overflow-hidden shadow-xl">
+              <Image
+                src="/images/yellowwinnie.svg"
+                alt="Yellow Winnie"
+                fill
+                className="object-cover"
+              />
             </div>
+          </div>
+        </motion.div>
+
+        {/* App Images - Mobile Swipeable */}
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-16 md:hidden"
+        >
+          {/* Swipe Container */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 px-4 pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {appImages.map((app) => (
+              <div
+                key={app.id}
+                className="flex-shrink-0 w-[280px] snap-center"
+              >
+                <div className="relative w-full aspect-[9/19] rounded-[2rem] overflow-hidden shadow-xl bg-white">
+                  <Image
+                    src={app.src}
+                    alt={app.label}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <p className="text-center text-sm font-medium text-gray-600 mt-3">{app.label}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Navigation Dots & Arrows */}
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <button
+              onClick={() => scrollToIndex(Math.max(0, activeIndex - 1))}
+              className="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow disabled:opacity-50"
+              disabled={activeIndex === 0}
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-600" />
+            </button>
+
+            <div className="flex gap-2">
+              {appImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === activeIndex
+                      ? 'w-6 bg-[var(--color-brand-600)]'
+                      : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => scrollToIndex(Math.min(appImages.length - 1, activeIndex + 1))}
+              className="p-2 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow disabled:opacity-50"
+              disabled={activeIndex === appImages.length - 1}
+            >
+              <ChevronRight className="w-5 h-5 text-gray-600" />
+            </button>
           </div>
         </motion.div>
       </div>
@@ -236,7 +324,7 @@ export default function HeroNew() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

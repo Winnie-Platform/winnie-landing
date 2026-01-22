@@ -95,7 +95,7 @@ export default function FAQ() {
           <p className="text-gray-600">
             더 궁금한 점이 있으신가요?{' '}
             <a
-              href="mailto:support@mywinnie.com"
+              href="mailto:winnie@yeowubie.com"
               className="font-medium text-[var(--color-primary-500)] hover:underline"
             >
               문의하기

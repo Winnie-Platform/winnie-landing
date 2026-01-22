@@ -126,11 +126,12 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between lg:h-20">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--color-brand-600)] transition-transform group-hover:scale-105">
-              <span className="text-lg font-bold text-white">W</span>
-            </div>
-            <span className="text-xl font-bold text-gray-900">winnie</span>
+          <Link href={`/${locale}`} className="flex items-center group">
+            <img
+              src="/images/winnie-logo.svg"
+              alt="Winnie"
+              className="h-8 sm:h-9 w-auto transition-transform group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -237,7 +238,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden rounded-full p-2.5 text-gray-600 hover:bg-gray-100 transition-colors"
+              className="lg:hidden rounded-full p-2.5 bg-white/80 backdrop-blur-sm text-gray-900 hover:bg-gray-100 transition-colors shadow-sm border border-gray-200"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

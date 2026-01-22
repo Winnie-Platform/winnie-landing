@@ -11,7 +11,7 @@ export default function Footer() {
   const links = [
     { href: `/${locale}/terms`, label: t('links.terms') },
     { href: `/${locale}/privacy`, label: t('links.privacy') },
-    { href: 'mailto:support@mywinnie.com', label: t('links.contact'), external: true },
+    { href: 'mailto:winnie@yeowubie.com', label: t('links.contact'), external: true },
   ];
 
   return (
@@ -58,11 +58,11 @@ export default function Footer() {
 
             {/* Contact Email */}
             <a
-              href="mailto:support@mywinnie.com"
+              href="mailto:winnie@yeowubie.com"
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-[var(--color-brand-600)] transition-colors"
             >
               <Mail className="h-4 w-4" />
-              support@mywinnie.com
+              winnie@yeowubie.com
             </a>
           </div>
         </div>

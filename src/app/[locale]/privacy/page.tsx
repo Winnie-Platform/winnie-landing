@@ -67,7 +67,7 @@ export default async function PrivacyPage({ params }: Props) {
           {/* Footer Note */}
           <div className="mt-12 text-center">
             <p className="text-sm text-gray-500">
-              {t('contactInfo')}: support@mywinnie.com
+              {t('contactInfo')}: winnie@yeowubie.com
             </p>
           </div>
         </div>

@@ -75,7 +75,7 @@ export const organizationSchema = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      email: 'support@mywinnie.com',
+      email: 'winnie@yeowubie.com',
       contactType: 'customer service',
       availableLanguage: ['Korean', 'Vietnamese', 'English'],
       areaServed: ['VN', 'KR'],

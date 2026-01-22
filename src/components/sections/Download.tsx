@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Apple, Play, Sparkles } from 'lucide-react';
 
@@ -138,13 +139,13 @@ export default function Download() {
 
                 {/* QR Code */}
                 <div className="relative bg-white rounded-2xl p-4">
-                  <div className="w-40 h-40 mx-auto bg-gradient-to-br from-gray-50 to-white rounded-xl flex flex-col items-center justify-center border border-gray-100">
-                    <div className="w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center mb-2">
-                      <Apple className="w-6 h-6 text-white" />
-                    </div>
-                    <p className="text-xs text-gray-500 text-center">
-                      App Store<br />QR Code
-                    </p>
+                  <div className="w-40 h-40 mx-auto relative">
+                    <Image
+                      src="/images/appstore-qr.svg"
+                      alt="App Store QR Code"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
 
                   {/* Corner Markers */}
@@ -187,13 +188,13 @@ export default function Download() {
 
                 {/* QR Code */}
                 <div className="relative bg-white rounded-2xl p-4">
-                  <div className="w-40 h-40 mx-auto bg-gradient-to-br from-gray-50 to-white rounded-xl flex flex-col items-center justify-center border border-gray-100">
-                    <div className="w-12 h-12 rounded-xl bg-green-600 flex items-center justify-center mb-2">
-                      <Play className="w-6 h-6 text-white fill-white" />
-                    </div>
-                    <p className="text-xs text-gray-500 text-center">
-                      Google Play<br />QR Code
-                    </p>
+                  <div className="w-40 h-40 mx-auto relative">
+                    <Image
+                      src="/images/playstore-qr.svg"
+                      alt="Google Play QR Code"
+                      fill
+                      className="object-contain"
+                    />
                   </div>
 
                   {/* Corner Markers */}

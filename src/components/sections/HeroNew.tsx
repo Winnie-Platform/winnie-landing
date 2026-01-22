@@ -118,7 +118,7 @@ export default function HeroNew() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[120vh] flex items-start pt-32 lg:pt-40 overflow-hidden"
+      className="relative min-h-screen flex items-start pt-24 sm:pt-32 lg:pt-40 overflow-x-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-brand-50)] via-white to-white" />
@@ -144,8 +144,8 @@ export default function HeroNew() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div className="text-center max-w-4xl mx-auto">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-8 w-full">
+        <div className="text-center max-w-4xl mx-auto px-2 sm:px-0">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -165,7 +165,7 @@ export default function HeroNew() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-[1.1]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-[1.15]"
           >
             {t('title')}
           </motion.h1>
@@ -256,29 +256,31 @@ export default function HeroNew() {
 
         {/* App Images - Mobile Swipeable */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 md:hidden"
+          className="mt-12 md:hidden"
         >
           {/* Swipe Container */}
           <div
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 px-4 pb-4"
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 -mx-6"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
+            {/* Spacer for centering first item */}
+            <div className="flex-shrink-0 w-[calc(50vw-120px)]" />
             {appImages.map((app) => (
               <div
                 key={app.id}
-                className="flex-shrink-0 w-[280px] snap-center"
+                className="flex-shrink-0 w-[240px] snap-center mx-2"
               >
                 <div className="relative w-full">
                   <Image
                     src={app.src}
                     alt={app.label}
-                    width={280}
-                    height={600}
+                    width={240}
+                    height={520}
                     className="w-full h-auto drop-shadow-xl"
                     priority
                   />
@@ -286,6 +288,8 @@ export default function HeroNew() {
                 <p className="text-center text-sm font-medium text-gray-600 mt-3">{app.label}</p>
               </div>
             ))}
+            {/* Spacer for centering last item */}
+            <div className="flex-shrink-0 w-[calc(50vw-120px)]" />
           </div>
 
           {/* Navigation Dots & Arrows */}

@@ -70,7 +70,7 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
       'Content-Type': 'application/json',
       ...options.headers,
     },
-    next: { revalidate: 3600 }, // ISR: revalidate every hour
+    next: { revalidate: 60 }, // ISR: revalidate every minute
   });
 
   if (!res.ok) {

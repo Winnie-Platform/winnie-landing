@@ -1,4 +1,11 @@
-const WP_API_URL = process.env.WORDPRESS_API_URL || 'https://mywinnie.com/wp-json/wp/v2';
+// WordPress API URL - MUST be set in environment variables
+// Since mywinnie.com now points to Vercel, WordPress is only accessible via Lightsail IP
+const WP_API_URL = process.env.WORDPRESS_API_URL;
+
+// Log warning if WordPress API URL is not configured
+if (!WP_API_URL) {
+  console.warn('[WordPress] WORDPRESS_API_URL is not set. Blog features will not work.');
+}
 
 // 언어별 카테고리 슬러그 매핑
 const LOCALE_CATEGORY_MAP: Record<string, string> = {
@@ -53,6 +60,10 @@ export interface WPCategory {
 }
 
 async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+  if (!WP_API_URL) {
+    throw new Error('WORDPRESS_API_URL environment variable is not set');
+  }
+
   const res = await fetch(`${WP_API_URL}${endpoint}`, {
     ...options,
     headers: {
@@ -76,6 +87,12 @@ export async function getPosts(params: {
   categories?: number[];
   search?: string;
 } = {}): Promise<{ posts: WPPost[]; totalPages: number; total: number }> {
+  // Return empty if WordPress API URL is not configured
+  if (!WP_API_URL) {
+    console.warn('[WordPress] Cannot fetch posts: WORDPRESS_API_URL is not set');
+    return { posts: [], totalPages: 0, total: 0 };
+  }
+
   const { locale, page = 1, perPage = 10, categories, search } = params;
 
   const queryParams = new URLSearchParams({
@@ -99,20 +116,26 @@ export async function getPosts(params: {
     queryParams.set('search', search);
   }
 
-  const res = await fetch(`${WP_API_URL}/posts?${queryParams}`, {
-    headers: { 'Content-Type': 'application/json' },
-    next: { revalidate: 3600 },
-  });
+  try {
+    const res = await fetch(`${WP_API_URL}/posts?${queryParams}`, {
+      headers: { 'Content-Type': 'application/json' },
+      next: { revalidate: 3600 },
+    });
 
-  if (!res.ok) {
+    if (!res.ok) {
+      console.error(`[WordPress] API error: ${res.status} ${res.statusText}`);
+      return { posts: [], totalPages: 0, total: 0 };
+    }
+
+    const posts = await res.json();
+    const totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1');
+    const total = parseInt(res.headers.get('X-WP-Total') || '0');
+
+    return { posts, totalPages, total };
+  } catch (error) {
+    console.error('[WordPress] Failed to fetch posts:', error);
     return { posts: [], totalPages: 0, total: 0 };
   }
-
-  const posts = await res.json();
-  const totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1');
-  const total = parseInt(res.headers.get('X-WP-Total') || '0');
-
-  return { posts, totalPages, total };
 }
 
 export async function getPost(slug: string): Promise<WPPost | null> {

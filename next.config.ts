@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'mywinnie.com',
       },
+      {
+        protocol: 'http',
+        hostname: '47.130.78.216',
+      },
+      {
+        protocol: 'https',
+        hostname: '47.130.78.216',
+      },
     ],
   },
 };

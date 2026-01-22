@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Title */}
           <h1
-            className="text-4xl font-bold text-gray-900 sm:text-5xl"
+            className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
 

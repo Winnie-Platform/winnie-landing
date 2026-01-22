@@ -1,5 +1,15 @@
 const WP_API_URL = process.env.WORDPRESS_API_URL || 'https://mywinnie.com/wp-json/wp/v2';
 
+// 언어별 카테고리 슬러그 매핑
+const LOCALE_CATEGORY_MAP: Record<string, string> = {
+  ko: 'korean',
+  vi: 'vietnamese',
+  en: 'english',
+};
+
+// 카테고리 ID 캐시
+const categoryIdCache: Record<string, number | null> = {};
+
 export interface WPPost {
   id: number;
   date: string;
@@ -60,12 +70,13 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
 }
 
 export async function getPosts(params: {
+  locale?: string;
   page?: number;
   perPage?: number;
   categories?: number[];
   search?: string;
 } = {}): Promise<{ posts: WPPost[]; totalPages: number; total: number }> {
-  const { page = 1, perPage = 10, categories, search } = params;
+  const { locale, page = 1, perPage = 10, categories, search } = params;
 
   const queryParams = new URLSearchParams({
     page: page.toString(),
@@ -73,7 +84,14 @@ export async function getPosts(params: {
     _embed: 'true',
   });
 
-  if (categories?.length) {
+  // 언어별 카테고리 필터링
+  if (locale) {
+    const localeCategoryId = await getLocaleCategoryId(locale);
+    if (localeCategoryId) {
+      const allCategories = categories ? [...categories, localeCategoryId] : [localeCategoryId];
+      queryParams.set('categories', allCategories.join(','));
+    }
+  } else if (categories?.length) {
     queryParams.set('categories', categories.join(','));
   }
 
@@ -122,9 +140,46 @@ export async function getCategories(): Promise<WPCategory[]> {
   }
 }
 
-export async function getPostSlugs(): Promise<string[]> {
+export async function getCategoryBySlug(slug: string): Promise<WPCategory | null> {
+  // 캐시 확인
+  if (slug in categoryIdCache) {
+    const cachedId = categoryIdCache[slug];
+    if (cachedId === null) return null;
+    return { id: cachedId, name: slug, slug, count: 0 };
+  }
+
   try {
-    const posts = await fetchAPI<WPPost[]>('/posts?per_page=100&_fields=slug');
+    const categories = await fetchAPI<WPCategory[]>(`/categories?slug=${slug}`);
+    const category = categories[0] || null;
+    categoryIdCache[slug] = category?.id || null;
+    return category;
+  } catch {
+    categoryIdCache[slug] = null;
+    return null;
+  }
+}
+
+export async function getLocaleCategoryId(locale: string): Promise<number | null> {
+  const categorySlug = LOCALE_CATEGORY_MAP[locale];
+  if (!categorySlug) return null;
+
+  const category = await getCategoryBySlug(categorySlug);
+  return category?.id || null;
+}
+
+export async function getPostSlugs(locale?: string): Promise<string[]> {
+  try {
+    let endpoint = '/posts?per_page=100&_fields=slug,categories';
+
+    // 언어별 카테고리 필터링
+    if (locale) {
+      const localeCategoryId = await getLocaleCategoryId(locale);
+      if (localeCategoryId) {
+        endpoint += `&categories=${localeCategoryId}`;
+      }
+    }
+
+    const posts = await fetchAPI<WPPost[]>(endpoint);
     return posts.map((post) => post.slug);
   } catch {
     return [];
@@ -154,4 +209,16 @@ export function formatDate(dateString: string, locale: string = 'ko'): string {
     month: 'long',
     day: 'numeric',
   });
+}
+
+export function calculateReadingTime(content: string, locale: string = 'ko'): number {
+  const plainText = stripHtml(content);
+  const wordsPerMinute = locale === 'en' ? 200 : 500;
+  const textLength = locale === 'en' ? plainText.split(/\s+/).length : plainText.length;
+  return Math.max(1, Math.ceil(textLength / wordsPerMinute));
+}
+
+export function truncateText(text: string, maxLength: number = 150): string {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength).trim() + '...';
 }

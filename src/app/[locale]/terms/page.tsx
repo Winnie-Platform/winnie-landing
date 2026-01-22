@@ -21,18 +21,6 @@ export default async function TermsPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'terms' });
 
-  const sections = [
-    { title: t('sections.purpose.title'), content: t('sections.purpose.content') },
-    { title: t('sections.definitions.title'), content: t('sections.definitions.content') },
-    { title: t('sections.terms.title'), content: t('sections.terms.content') },
-    { title: t('sections.services.title'), content: t('sections.services.content') },
-    { title: t('sections.membership.title'), content: t('sections.membership.content') },
-    { title: t('sections.obligations.title'), content: t('sections.obligations.content') },
-    { title: t('sections.transactions.title'), content: t('sections.transactions.content') },
-    { title: t('sections.liability.title'), content: t('sections.liability.content') },
-    { title: t('sections.disputes.title'), content: t('sections.disputes.content') },
-  ];
-
   return (
     <>
       <Header />
@@ -44,21 +32,16 @@ export default async function TermsPage({ params }: Props) {
               <span className="text-sm font-medium text-[var(--color-brand-700)]">{t('badge')}</span>
             </div>
             <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">{t('title')}</h1>
-            <p className="mt-4 text-gray-600">{t('lastUpdated')}: 2024-01-01</p>
+            <p className="mt-4 text-gray-600">{t('lastUpdated')}: {t('effectiveDate')}</p>
           </div>
 
           {/* Content */}
-          <div className="space-y-8">
-            {sections.map((section, index) => (
-              <section key={index} className="rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">
-                  {index + 1}. {section.title}
-                </h2>
-                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
-                  {section.content}
-                </p>
-              </section>
-            ))}
+          <div className="rounded-2xl bg-white p-6 sm:p-8 shadow-sm border border-gray-100">
+            <div className="prose prose-gray max-w-none">
+              <p className="text-gray-600 leading-relaxed whitespace-pre-line text-sm sm:text-base">
+                {t('fullContent')}
+              </p>
+            </div>
           </div>
 
           {/* Footer Note */}

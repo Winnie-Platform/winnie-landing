@@ -49,6 +49,36 @@ export default async function PartnershipPage({ params }: Props) {
           </div>
         </section>
 
+        {/* Quick Contact Buttons */}
+        <section className="pb-8 lg:pb-12">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="http://pf.kakao.com/_exdHin/chat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#FEE500] text-[#3C1E1E] font-semibold rounded-2xl hover:bg-[#FFEB3B] transition-colors shadow-md"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3C6.477 3 2 6.463 2 10.731c0 2.747 1.865 5.166 4.68 6.533-.146.533-.534 1.935-.612 2.234-.097.371.136.367.287.267.118-.078 1.896-1.248 2.66-1.754.654.097 1.324.148 2.008.148 5.523 0 10-3.463 10-7.428C22 6.463 17.523 3 12 3z"/>
+                </svg>
+                {t('contact.kakao')}
+              </a>
+              <a
+                href="https://zalo.me/352608876316800107"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#0068FF] text-white font-semibold rounded-2xl hover:bg-[#0052CC] transition-colors shadow-md"
+              >
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm4.8 6.4h-2.4v1.6h2.4v1.6h-2.4v3.2h-1.6V8.8h4V8.4h-4v-.8h4v.8zm-6.4 6.4H8.8v-4.8h-1.6v6.4h4v-1.6zm-1.6-4.8H7.2v4.8h1.6v-4.8z"/>
+                </svg>
+                {t('contact.zalo')}
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Form Section */}
         <section className="py-16 lg:py-24">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

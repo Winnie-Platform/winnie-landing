@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Winnie Partnership <noreply@mywinnie.com>',
+      from: 'Winnie Partnership <onboarding@resend.dev>',
       to: [CONTACT_EMAIL],
       replyTo: email,
       subject: `[Partnership Inquiry] ${company} - ${type}`,

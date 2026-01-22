@@ -267,7 +267,10 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-16 z-[9999] bg-white lg:hidden">
+        <div
+          className="absolute left-0 right-0 top-full z-[9999] bg-white lg:hidden shadow-xl border-t border-gray-100"
+          style={{ height: 'calc(100vh - 64px)', maxHeight: 'calc(100dvh - 64px)' }}
+        >
           <nav className="flex flex-col p-6 h-full overflow-y-auto safe-area-bottom">
             <div className="space-y-1">
               {/* Services Section */}

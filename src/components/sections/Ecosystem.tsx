@@ -183,25 +183,25 @@ export default function Ecosystem() {
           {/* Connection Lines (Desktop) */}
           <div
             ref={connectorsRef}
-            className="hidden md:flex absolute top-1/2 left-0 right-0 -translate-y-1/2 justify-center items-center pointer-events-none"
+            className="hidden md:flex absolute top-1/2 left-0 right-0 -translate-y-1/2 justify-between items-center pointer-events-none px-[calc(33.33%-20px)]"
             style={{ marginTop: '-80px' }}
           >
-            {/* Left connector */}
-            <div className="absolute left-[30%] flex items-center gap-2">
-              <div className="w-12 h-0.5 bg-gradient-to-r from-[var(--color-brand-400)] to-orange-400" />
-              <div className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center">
+            {/* Left connector (between card 1 and 2) */}
+            <div className="flex items-center gap-1">
+              <div className="w-8 h-0.5 bg-gradient-to-r from-[var(--color-brand-400)] to-orange-400" />
+              <div className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center flex-shrink-0">
                 <ArrowLeftRight className="w-4 h-4 text-gray-400" />
               </div>
-              <div className="w-12 h-0.5 bg-gradient-to-r from-orange-400 to-[var(--color-brand-400)]" />
+              <div className="w-8 h-0.5 bg-gradient-to-r from-orange-400 to-[var(--color-brand-400)]" />
             </div>
 
-            {/* Right connector */}
-            <div className="absolute right-[30%] flex items-center gap-2">
-              <div className="w-12 h-0.5 bg-gradient-to-r from-orange-400 to-yellow-400" />
-              <div className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center">
+            {/* Right connector (between card 2 and 3) */}
+            <div className="flex items-center gap-1">
+              <div className="w-8 h-0.5 bg-gradient-to-r from-orange-400 to-yellow-400" />
+              <div className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center flex-shrink-0">
                 <ArrowLeftRight className="w-4 h-4 text-gray-400" />
               </div>
-              <div className="w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400" />
+              <div className="w-8 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400" />
             </div>
           </div>
         </div>

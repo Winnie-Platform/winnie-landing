@@ -70,7 +70,7 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
       'Content-Type': 'application/json',
       ...options.headers,
     },
-    next: { revalidate: 3600 }, // ISR: revalidate every hour
+    cache: 'no-store', // Always fetch fresh data
   });
 
   if (!res.ok) {
@@ -119,7 +119,7 @@ export async function getPosts(params: {
   try {
     const res = await fetch(`${WP_API_URL}/posts?${queryParams}`, {
       headers: { 'Content-Type': 'application/json' },
-      next: { revalidate: 3600 },
+      cache: 'no-store',
     });
 
     if (!res.ok) {

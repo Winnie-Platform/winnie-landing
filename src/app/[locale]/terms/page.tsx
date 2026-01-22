@@ -64,7 +64,7 @@ export default async function TermsPage({ params }: Props) {
           {/* Footer Note */}
           <div className="mt-12 text-center">
             <p className="text-sm text-gray-500">
-              {t('contact')}: support@mywinnie.com
+              {t('contact')}: winnie@yeowubie.com
             </p>
           </div>
         </div>

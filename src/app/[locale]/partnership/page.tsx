@@ -97,7 +97,7 @@ export default async function PartnershipPage({ params }: Props) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('contact.email.title')}</h3>
-                <p className="text-gray-600">partnership@mywinnie.com</p>
+                <p className="text-gray-600">winnie@yeowubie.com</p>
               </div>
 
               <div className="text-center p-8 bg-white rounded-3xl shadow-sm">
@@ -107,7 +107,7 @@ export default async function PartnershipPage({ params }: Props) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('contact.phone.title')}</h3>
-                <p className="text-gray-600">+84 123 456 789</p>
+                <p className="text-gray-600">+84 88 6811 224</p>
               </div>
 
               <div className="text-center p-8 bg-white rounded-3xl shadow-sm">
@@ -118,7 +118,7 @@ export default async function PartnershipPage({ params }: Props) {
                   </svg>
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('contact.location.title')}</h3>
-                <p className="text-gray-600">Ho Chi Minh City, Vietnam</p>
+                <p className="text-gray-600">Ha Noi, Vietnam</p>
               </div>
             </div>
           </div>

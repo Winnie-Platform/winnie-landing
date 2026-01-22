@@ -114,6 +114,7 @@ export default async function BlogPage({ params, searchParams }: Props) {
                               alt={post.title.rendered}
                               fill
                               className="object-cover transition-transform group-hover:scale-105"
+                              unoptimized
                             />
                           ) : (
                             <div className="flex h-full items-center justify-center bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-primary-200)]">

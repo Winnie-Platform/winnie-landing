@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useTransition } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
@@ -24,6 +24,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const langMenuRef = useRef<HTMLDivElement>(null);
   const servicesMenuRef = useRef<HTMLDivElement>(null);
 
@@ -65,9 +66,11 @@ export default function Header() {
 
   const handleLanguageChange = (langCode: string) => {
     const newPath = pathname.replace(`/${locale}`, `/${langCode}`);
-    router.push(newPath || `/${langCode}`);
     setIsLangMenuOpen(false);
     setIsMobileMenuOpen(false);
+    startTransition(() => {
+      router.push(newPath || `/${langCode}`);
+    });
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -101,13 +104,13 @@ export default function Header() {
     },
     {
       id: 'vendor',
-      href: 'https://vendor.mywinnie.com',
+      href: 'https://www.winnievendor.com/',
       label: t('services.vendor'),
       external: true
     },
     {
       id: 'yellow',
-      href: 'https://yellow.mywinnie.com',
+      href: 'https://www.yellowwinnie.com/',
       label: t('services.yellow'),
       external: true
     },
@@ -197,10 +200,18 @@ export default function Header() {
             <div className="relative" ref={langMenuRef}>
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-                className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100"
+                className={cn(
+                  "flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100",
+                  isPending && "opacity-70"
+                )}
                 aria-label="Select language"
+                disabled={isPending}
               >
-                <span>{currentLang.flag}</span>
+                {isPending ? (
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600" />
+                ) : (
+                  <span>{currentLang.flag}</span>
+                )}
                 <ChevronDown className={cn('h-4 w-4 transition-transform', isLangMenuOpen && 'rotate-180')} />
               </button>
 

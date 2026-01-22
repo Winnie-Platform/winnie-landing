@@ -209,8 +209,57 @@ export async function getPostSlugs(locale?: string): Promise<string[]> {
   }
 }
 
+// WordPress Lightsail IP that serves images over HTTP
+const WP_IMAGE_HOST = '47.130.78.216';
+
+// Convert HTTP image URLs to use our HTTPS proxy
+export function sanitizeImageUrl(url: string | null): string | null {
+  if (!url) return null;
+
+  // If it's an HTTP URL from WordPress, proxy it through our API
+  if (url.startsWith('http://') && url.includes(WP_IMAGE_HOST)) {
+    return `/api/image?url=${encodeURIComponent(url)}`;
+  }
+
+  // Convert other http URLs to https
+  if (url.startsWith('http://')) {
+    return url.replace('http://', 'https://');
+  }
+
+  return url;
+}
+
+// Sanitize all image URLs in HTML content
+export function sanitizeContent(html: string): string {
+  if (!html) return '';
+
+  // Replace WordPress HTTP image URLs with our proxy
+  let result = html;
+
+  // Match src attributes with http:// URLs containing the WordPress IP
+  result = result.replace(
+    /src="(http:\/\/47\.130\.78\.216[^"]*)"/g,
+    (match, url) => `src="/api/image?url=${encodeURIComponent(url)}"`
+  );
+
+  // Match srcset attributes
+  result = result.replace(
+    /srcset="([^"]*)"/g,
+    (match, srcset) => {
+      const newSrcset = srcset.replace(
+        /http:\/\/47\.130\.78\.216[^\s,]*/g,
+        (url: string) => `/api/image?url=${encodeURIComponent(url)}`
+      );
+      return `srcset="${newSrcset}"`;
+    }
+  );
+
+  return result;
+}
+
 export function getFeaturedImageUrl(post: WPPost): string | null {
-  return post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+  const url = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
+  return sanitizeImageUrl(url);
 }
 
 export function getAuthorName(post: WPPost): string {

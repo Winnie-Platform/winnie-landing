@@ -13,6 +13,7 @@ import {
   calculateReadingTime,
   getCategoryNames,
   getAuthorName,
+  sanitizeContent,
 } from '@/lib/wordpress';
 import { Calendar, User, ArrowLeft, Clock } from 'lucide-react';
 import { locales } from '@/i18n/config';
@@ -205,7 +206,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Content */}
           <div
             className="blog-content mt-8 sm:mt-10"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content.rendered) }}
           />
 
           {/* Share */}

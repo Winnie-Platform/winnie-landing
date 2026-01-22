@@ -17,6 +17,8 @@ import {
 import { Calendar, User, ArrowLeft, Share2, Clock } from 'lucide-react';
 import { locales } from '@/i18n/config';
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };

@@ -15,6 +15,8 @@ import {
 } from '@/lib/wordpress';
 import { Calendar, User, Clock } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ page?: string; category?: string }>;

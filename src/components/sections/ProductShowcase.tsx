@@ -128,7 +128,7 @@ export default function ProductShowcase({ productId }: ProductShowcaseProps) {
     <section
       id={productId}
       ref={sectionRef}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:py-32"
       style={{ backgroundColor: productId === 'vendor' ? 'white' : config.bgColor }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

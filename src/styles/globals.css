@@ -60,13 +60,13 @@
   --foreground-dark: #FAFAFA;
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
+/* Dark Mode Support - Disabled for consistent light theme */
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0A0A0A;
     --foreground: #FAFAFA;
   }
-}
+} */
 
 /* ============================================
    Tailwind Theme Extensions

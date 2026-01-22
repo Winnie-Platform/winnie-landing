@@ -157,7 +157,7 @@ export default function Download() {
 
                 {/* Download Link */}
                 <a
-                  href="https://apps.apple.com/app/winnie"
+                  href="https://apps.apple.com/vn/app/winnie/id6737789682?l"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center justify-center w-full gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-4 py-3 text-sm font-medium text-white transition-colors"
@@ -206,7 +206,7 @@ export default function Download() {
 
                 {/* Download Link */}
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.mywinnie"
+                  href="https://play.google.com/store/apps/details?id=com.winnie.userapp.v1&pcampaignid"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center justify-center w-full gap-2 rounded-xl bg-white/10 hover:bg-white/20 px-4 py-3 text-sm font-medium text-white transition-colors"

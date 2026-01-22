@@ -32,7 +32,7 @@ export default function MobileStickyBar() {
           <div className="flex gap-3">
             {/* App Store Button */}
             <a
-              href="https://apps.apple.com/app/winnie"
+              href="https://apps.apple.com/vn/app/winnie/id6737789682?l"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-black py-3 text-white transition-transform active:scale-95"
@@ -47,7 +47,7 @@ export default function MobileStickyBar() {
 
             {/* Google Play Button */}
             <a
-              href="https://play.google.com/store/apps/details?id=com.mywinnie"
+              href="https://play.google.com/store/apps/details?id=com.winnie.userapp.v1&pcampaignid"
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-black py-3 text-white transition-transform active:scale-95"

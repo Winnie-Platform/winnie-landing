@@ -117,7 +117,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 safe-area-top',
+        'fixed top-0 left-0 right-0 z-[100] transition-all duration-300 safe-area-top',
         isScrolled || isMobileMenuOpen
           ? 'bg-white/80 backdrop-blur-xl shadow-sm'
           : 'bg-transparent'
@@ -255,7 +255,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-16 z-40 bg-white lg:hidden"
+            className="fixed inset-x-0 top-16 bottom-0 z-[100] bg-white lg:hidden overflow-hidden"
           >
             <motion.nav
               initial={{ opacity: 0, y: -20 }}

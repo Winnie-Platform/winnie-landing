@@ -5,47 +5,54 @@ import Link from 'next/link';
 import { setRequestLocale } from 'next-intl/server';
 import { Header, Footer } from '@/components/layout';
 import {
-  getArticleBySlug,
-  getAllArticleSlugs,
-  getArticleLocalizations,
-  getStrapiImageUrl,
+  getPost,
+  getPostSlugs,
+  getFeaturedImageUrl,
   formatDate,
   stripHtml,
   calculateReadingTime,
-} from '@/lib/strapi';
-import { Calendar, User, ArrowLeft, Share2, Clock, Globe } from 'lucide-react';
+  getCategoryNames,
+  getAuthorName,
+} from '@/lib/wordpress';
+import { Calendar, User, ArrowLeft, Share2, Clock } from 'lucide-react';
+import { locales } from '@/i18n/config';
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-// 정적 생성을 위한 경로 생성 (다국어 별도 발행)
 export async function generateStaticParams() {
-  const slugs = await getAllArticleSlugs();
-  return slugs.map(({ slug, locale }) => ({ locale, slug }));
+  const params: Array<{ locale: string; slug: string }> = [];
+
+  // 각 언어별로 해당 언어 카테고리의 슬러그만 가져옴
+  for (const locale of locales) {
+    const slugs = await getPostSlugs(locale);
+    params.push(...slugs.map((slug) => ({ locale, slug })));
+  }
+
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const article = await getArticleBySlug(slug, locale);
+  const post = await getPost(slug);
 
-  if (!article) {
+  if (!post) {
     return { title: 'Not Found' };
   }
 
-  const featuredImage = getStrapiImageUrl(article.featuredImage);
+  const featuredImage = getFeaturedImageUrl(post);
 
   return {
-    title: article.seo?.metaTitle || article.title,
-    description: article.seo?.metaDescription || article.excerpt || stripHtml(article.content).slice(0, 160),
-    keywords: article.seo?.keywords,
+    title: post.title.rendered,
+    description: stripHtml(post.excerpt.rendered).slice(0, 160),
     openGraph: {
       type: 'article',
-      title: article.seo?.metaTitle || article.title,
-      description: article.seo?.metaDescription || article.excerpt || stripHtml(article.content).slice(0, 160),
+      title: post.title.rendered,
+      description: stripHtml(post.excerpt.rendered).slice(0, 160),
       images: featuredImage ? [{ url: featuredImage }] : [],
-      publishedTime: article.publishedAt,
-      modifiedTime: article.updatedAt,
+      publishedTime: post.date,
+      modifiedTime: post.modified,
       locale: locale,
     },
   };
@@ -55,19 +62,18 @@ export default async function BlogPostPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const article = await getArticleBySlug(slug, locale);
+  const post = await getPost(slug);
 
-  if (!article) {
+  if (!post) {
     notFound();
   }
 
-  const featuredImage = getStrapiImageUrl(article.featuredImage);
-  const readingTime = calculateReadingTime(article.content, locale);
+  const featuredImage = getFeaturedImageUrl(post);
+  const readingTime = calculateReadingTime(post.content.rendered, locale);
+  const categories = getCategoryNames(post);
+  const authorName = getAuthorName(post);
 
-  // 다른 언어 버전 가져오기 (다국어 별도 발행 구조)
-  const localizations = article.localizations || [];
-
-  const labels: Record<string, { back: string; share: string; cta: string; ctaDesc: string; ctaBtn: string; minRead: string; otherLangs: string }> = {
+  const labels: Record<string, { back: string; share: string; cta: string; ctaDesc: string; ctaBtn: string; minRead: string }> = {
     ko: {
       back: '블로그로 돌아가기',
       share: '공유하기',
@@ -75,7 +81,6 @@ export default async function BlogPostPage({ params }: Props) {
       ctaDesc: '베트남 로컬 가게의 회원권을 한눈에 검색하고 구매하세요',
       ctaBtn: '앱 다운로드',
       minRead: '분 읽기',
-      otherLangs: '다른 언어로 읽기',
     },
     vi: {
       back: 'Quay lại blog',
@@ -84,7 +89,6 @@ export default async function BlogPostPage({ params }: Props) {
       ctaDesc: 'Tìm kiếm và mua thẻ thành viên của các cửa hàng địa phương Việt Nam',
       ctaBtn: 'Tải ứng dụng',
       minRead: 'phút đọc',
-      otherLangs: 'Đọc bằng ngôn ngữ khác',
     },
     en: {
       back: 'Back to blog',
@@ -93,17 +97,10 @@ export default async function BlogPostPage({ params }: Props) {
       ctaDesc: 'Search and purchase membership cards from local Vietnamese stores',
       ctaBtn: 'Download App',
       minRead: 'min read',
-      otherLangs: 'Read in other languages',
     },
   };
 
   const t = labels[locale] || labels.ko;
-
-  const languageNames: Record<string, string> = {
-    ko: '한국어',
-    vi: 'Tiếng Việt',
-    en: 'English',
-  };
 
   return (
     <>
@@ -120,60 +117,42 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
 
           {/* Category */}
-          {article.category && (
+          {categories.length > 0 && (
             <div className="mb-4">
               <span className="rounded-full bg-[var(--color-primary-50)] px-3 py-1 text-sm font-medium text-[var(--color-primary-600)]">
-                {article.category.name}
+                {categories[0]}
               </span>
             </div>
           )}
 
           {/* Title */}
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-            {article.title}
-          </h1>
+          <h1
+            className="text-4xl font-bold text-gray-900 sm:text-5xl"
+            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+          />
 
           {/* Meta */}
           <div className="mt-6 flex flex-wrap items-center gap-6 border-b border-gray-200 pb-6 text-sm text-gray-500">
             <span className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              {formatDate(article.publishedAt, locale)}
+              {formatDate(post.date, locale)}
             </span>
             <span className="flex items-center gap-2">
               <Clock className="h-4 w-4" />
               {readingTime} {t.minRead}
             </span>
-            {article.author && (
-              <span className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                {article.author.name}
-              </span>
-            )}
+            <span className="flex items-center gap-2">
+              <User className="h-4 w-4" />
+              {authorName}
+            </span>
           </div>
-
-          {/* Other language versions (다국어 별도 발행) */}
-          {localizations.length > 0 && (
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
-              <Globe className="h-4 w-4 text-gray-400" />
-              <span className="text-gray-500">{t.otherLangs}:</span>
-              {localizations.map((loc) => (
-                <Link
-                  key={loc.locale}
-                  href={`/${loc.locale}/blog/${loc.slug}`}
-                  className="rounded-full bg-gray-100 px-3 py-1 text-gray-600 hover:bg-gray-200"
-                >
-                  {languageNames[loc.locale] || loc.locale}
-                </Link>
-              ))}
-            </div>
-          )}
 
           {/* Featured Image */}
           {featuredImage && (
             <div className="relative mt-8 aspect-video overflow-hidden rounded-2xl">
               <Image
                 src={featuredImage}
-                alt={article.title}
+                alt={stripHtml(post.title.rendered)}
                 fill
                 className="object-cover"
                 priority
@@ -184,7 +163,7 @@ export default async function BlogPostPage({ params }: Props) {
           {/* Content */}
           <div
             className="prose prose-lg mt-10 max-w-none prose-headings:font-bold prose-a:text-[var(--color-primary-500)] prose-img:rounded-xl"
-            dangerouslySetInnerHTML={{ __html: article.content }}
+            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
 
           {/* Share */}
@@ -206,7 +185,7 @@ export default async function BlogPostPage({ params }: Props) {
                 </svg>
               </a>
               <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://mywinnie.com/${locale}/blog/${slug}`)}&text=${encodeURIComponent(article.title)}`}
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://mywinnie.com/${locale}/blog/${slug}`)}&text=${encodeURIComponent(stripHtml(post.title.rendered))}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200"

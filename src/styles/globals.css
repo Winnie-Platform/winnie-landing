@@ -6,17 +6,33 @@
    ============================================ */
 
 :root {
-  /* Brand Color - Winnie Purple (Single Theme) */
-  --color-brand-50: #FAF5FF;
-  --color-brand-100: #F3E8FF;
-  --color-brand-200: #E9D5FF;
-  --color-brand-300: #D8B4FE;
-  --color-brand-400: #C084FC;
-  --color-brand-500: #A855F7;
-  --color-brand-600: #9333EA;
-  --color-brand-700: #7E22CE;
-  --color-brand-800: #6B21A8;
-  --color-brand-900: #581C87;
+  /* Brand Color - Winnie Blue (Single Theme) */
+  --color-brand-50: #EEF2FF;
+  --color-brand-100: #E0E7FF;
+  --color-brand-200: #C7D2FE;
+  --color-brand-300: #A5B4FC;
+  --color-brand-400: #818CF8;
+  --color-brand-500: #4865F6;
+  --color-brand-600: #3B4FD4;
+  --color-brand-700: #2E3DB0;
+  --color-brand-800: #232E8C;
+  --color-brand-900: #1A2268;
+
+  /* Primary Color Alias (for compatibility) */
+  --color-primary-50: var(--color-brand-50);
+  --color-primary-100: var(--color-brand-100);
+  --color-primary-200: var(--color-brand-200);
+  --color-primary-300: var(--color-brand-300);
+  --color-primary-400: var(--color-brand-400);
+  --color-primary-500: var(--color-brand-500);
+  --color-primary-600: var(--color-brand-600);
+  --color-primary-700: var(--color-brand-700);
+  --color-primary-800: var(--color-brand-800);
+  --color-primary-900: var(--color-brand-900);
+
+  /* CTA Color Alias */
+  --color-cta-500: var(--color-brand-500);
+  --color-cta-600: var(--color-brand-600);
 
   /* Neutral Colors */
   --color-gray-50: #FAFAFA;
@@ -226,7 +242,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 32px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 32px rgba(72, 101, 246, 0.4);
 }
 
 /* Gradient Text */

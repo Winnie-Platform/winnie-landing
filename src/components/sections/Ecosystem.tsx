@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Smartphone, Globe, Map, ArrowRight, ArrowLeftRight } from 'lucide-react';
+import { Smartphone, Globe, Map, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +35,6 @@ export default function Ecosystem() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
-  const connectorsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -70,24 +69,6 @@ export default function Ecosystem() {
           scrollTrigger: {
             trigger: cardsRef.current,
             start: 'top 75%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-
-      // Connectors animation
-      gsap.fromTo(
-        connectorsRef.current?.children || [],
-        { opacity: 0, scale: 0 },
-        {
-          opacity: 1,
-          scale: 1,
-          stagger: 0.2,
-          duration: 0.5,
-          ease: 'back.out(2)',
-          scrollTrigger: {
-            trigger: cardsRef.current,
-            start: 'top 60%',
             toggleActions: 'play none none reverse',
           },
         }
@@ -178,31 +159,6 @@ export default function Ecosystem() {
                 </a>
               </div>
             ))}
-          </div>
-
-          {/* Connection Lines (Desktop) */}
-          <div
-            ref={connectorsRef}
-            className="hidden md:flex absolute top-1/2 left-0 right-0 -translate-y-1/2 justify-between items-center pointer-events-none px-[calc(33.33%-20px)]"
-            style={{ marginTop: '-80px' }}
-          >
-            {/* Left connector (between card 1 and 2) */}
-            <div className="flex items-center gap-1">
-              <div className="w-8 h-0.5 bg-gradient-to-r from-[var(--color-brand-400)] to-orange-400" />
-              <div className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center flex-shrink-0">
-                <ArrowLeftRight className="w-4 h-4 text-gray-400" />
-              </div>
-              <div className="w-8 h-0.5 bg-gradient-to-r from-orange-400 to-[var(--color-brand-400)]" />
-            </div>
-
-            {/* Right connector (between card 2 and 3) */}
-            <div className="flex items-center gap-1">
-              <div className="w-8 h-0.5 bg-gradient-to-r from-orange-400 to-yellow-400" />
-              <div className="w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center flex-shrink-0">
-                <ArrowLeftRight className="w-4 h-4 text-gray-400" />
-              </div>
-              <div className="w-8 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400" />
-            </div>
           </div>
         </div>
 

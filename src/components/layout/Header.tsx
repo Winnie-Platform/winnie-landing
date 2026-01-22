@@ -75,9 +75,14 @@ export default function Header() {
       e.preventDefault();
       setIsMobileMenuOpen(false);
       setIsServicesOpen(false);
+
       const element = document.querySelector(href);
       if (element) {
+        // Element exists on current page, scroll to it
         element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Element doesn't exist, navigate to home page with hash
+        router.push(`/${locale}${href}`);
       }
     } else {
       setIsMobileMenuOpen(false);

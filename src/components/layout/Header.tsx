@@ -195,9 +195,9 @@ export default function Header() {
           </nav>
 
           {/* Right Section */}
-          <div className="flex items-center gap-2">
-            {/* Language Selector */}
-            <div className="relative" ref={langMenuRef}>
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Language Selector - Hidden on small mobile, show on sm+ */}
+            <div className="relative hidden sm:block" ref={langMenuRef}>
               <button
                 onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
                 className={cn(
@@ -242,23 +242,24 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            {/* CTA Button - Desktop */}
+            {/* CTA Button - Desktop only */}
             <a
               href="#download"
               onClick={(e) => handleNavClick(e, '#download')}
-              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[var(--color-brand-600)] px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-[var(--color-brand-500)]/25 transition-all hover:bg-[var(--color-brand-700)] hover:shadow-xl active:scale-[0.98]"
+              className="hidden lg:inline-flex items-center gap-2 rounded-full bg-[var(--color-brand-600)] px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-[var(--color-brand-500)]/25 transition-all hover:bg-[var(--color-brand-700)] hover:shadow-xl active:scale-[0.98]"
             >
               <Download className="h-4 w-4" />
               <span>{t('download')}</span>
             </a>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Always visible on mobile/tablet */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="relative z-50 lg:hidden flex items-center justify-center rounded-full w-11 h-11 bg-white/90 backdrop-blur-sm text-gray-900 hover:bg-gray-100 active:bg-gray-200 transition-colors shadow-sm border border-gray-200"
+              className="block lg:hidden relative z-50 p-2 rounded-lg bg-gray-900 text-white hover:bg-gray-800 active:bg-gray-700 transition-colors"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              style={{ minWidth: '44px', minHeight: '44px' }}
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>

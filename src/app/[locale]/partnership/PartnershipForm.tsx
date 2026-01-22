@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle } from 'lucide-react';
 
+const CONTACT_EMAIL = 'winnie@yeowubie.com';
+
 export default function PartnershipForm() {
   const t = useTranslations('partnership');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -14,9 +16,31 @@ export default function PartnershipForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const formData = new FormData(e.currentTarget);
+    const company = formData.get('company') as string;
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
+    const type = formData.get('type') as string;
+    const message = formData.get('message') as string;
 
+    // Create email subject and body
+    const subject = `[Partnership Inquiry] ${company} - ${type}`;
+    const body = `Company: ${company}
+Contact Person: ${name}
+Email: ${email}
+Phone: ${phone}
+Partnership Type: ${type}
+
+Message:
+${message}`;
+
+    // Open mailto link
+    const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+
+    // Show success state after a brief delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setIsSubmitting(false);
     setIsSubmitted(true);
   };

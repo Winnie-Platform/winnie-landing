@@ -215,12 +215,13 @@ export default function HeroNew() {
         >
           {/* Main App - Winnie */}
           <div className="relative z-10">
-            <div className="relative w-64 sm:w-72 lg:w-80 aspect-[9/19] rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <div className="relative w-64 sm:w-72 lg:w-80">
               <Image
                 src="/images/winnieapp.svg"
                 alt="Winnie App"
-                fill
-                className="object-cover"
+                width={320}
+                height={680}
+                className="w-full h-auto drop-shadow-2xl"
                 priority
               />
             </div>
@@ -228,24 +229,26 @@ export default function HeroNew() {
 
           {/* Left App - Vendor */}
           <div className="absolute left-[5%] sm:left-[10%] lg:left-[15%] bottom-8 -z-0 opacity-70 scale-75">
-            <div className="relative w-56 sm:w-64 aspect-[9/19] rounded-[2rem] overflow-hidden shadow-xl">
+            <div className="relative w-56 sm:w-64">
               <Image
                 src="/images/winnievendor.svg"
                 alt="Winnie Vendor"
-                fill
-                className="object-cover"
+                width={280}
+                height={600}
+                className="w-full h-auto drop-shadow-xl"
               />
             </div>
           </div>
 
           {/* Right App - Yellow Winnie */}
           <div className="absolute right-[5%] sm:right-[10%] lg:right-[15%] bottom-8 -z-0 opacity-70 scale-75">
-            <div className="relative w-56 sm:w-64 aspect-[9/19] rounded-[2rem] overflow-hidden shadow-xl">
+            <div className="relative w-56 sm:w-64">
               <Image
                 src="/images/yellowwinnie.svg"
                 alt="Yellow Winnie"
-                fill
-                className="object-cover"
+                width={280}
+                height={600}
+                className="w-full h-auto drop-shadow-xl"
               />
             </div>
           </div>
@@ -270,12 +273,13 @@ export default function HeroNew() {
                 key={app.id}
                 className="flex-shrink-0 w-[280px] snap-center"
               >
-                <div className="relative w-full aspect-[9/19] rounded-[2rem] overflow-hidden shadow-xl bg-white">
+                <div className="relative w-full">
                   <Image
                     src={app.src}
                     alt={app.label}
-                    fill
-                    className="object-cover"
+                    width={280}
+                    height={600}
+                    className="w-full h-auto drop-shadow-xl"
                     priority
                   />
                 </div>

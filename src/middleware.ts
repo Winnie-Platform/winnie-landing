@@ -8,5 +8,6 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ['/', '/(ko|vi|en)/:path*'],
+  // Skip static files (files with extensions) and Next.js internals
+  matcher: ['/((?!_next|api|.*\\..*).*)'],
 };

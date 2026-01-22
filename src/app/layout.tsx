@@ -138,12 +138,7 @@ export const metadata: Metadata = {
 
   // Icons
   icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
-    ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    icon: [{ url: '/favicon.ico' }],
   },
 
   // Manifest
@@ -169,6 +164,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

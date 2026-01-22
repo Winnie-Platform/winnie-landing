@@ -1,0 +1,16 @@
+{
+  "name": "Winnie",
+  "short_name": "Winnie",
+  "description": "베트남 로컬 회원권 플랫폼",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4865F6",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

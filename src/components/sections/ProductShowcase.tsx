@@ -197,45 +197,45 @@ export default function ProductShowcase({ productId }: ProductShowcaseProps) {
               />
 
               {/* Device Frame */}
-              <div className="relative bg-gray-900 rounded-[3rem] p-3 shadow-2xl mx-auto max-w-[280px] lg:max-w-[320px]">
+              <div className="relative bg-gray-900 rounded-[2.5rem] p-2 shadow-2xl mx-auto max-w-[280px] lg:max-w-[320px]">
                 <div
-                  className="w-full aspect-[9/19] rounded-[2.5rem] overflow-hidden"
+                  className="w-full aspect-[9/19.5] rounded-[2rem]"
                   style={{
                     background: `linear-gradient(180deg, ${config.bgColor} 0%, white 100%)`,
                   }}
                 >
                   {/* App UI Mockup */}
-                  <div className="h-full p-6 flex flex-col">
+                  <div className="h-full p-4 pt-8 pb-4 flex flex-col">
                     {/* Header */}
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center justify-between mb-4">
                       <div
-                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                        className="w-9 h-9 rounded-xl flex items-center justify-center"
                         style={{ backgroundColor: config.color }}
                       >
-                        <span className="text-white font-bold">
+                        <span className="text-white font-bold text-sm">
                           {productId === 'winnie' ? 'W' : productId === 'vendor' ? 'V' : 'Y'}
                         </span>
                       </div>
                       <div className="flex gap-2">
-                        <div className="w-8 h-8 rounded-full bg-gray-100" />
-                        <div className="w-8 h-8 rounded-full bg-gray-100" />
+                        <div className="w-7 h-7 rounded-full bg-gray-100" />
+                        <div className="w-7 h-7 rounded-full bg-gray-100" />
                       </div>
                     </div>
 
                     {/* Content placeholder */}
-                    <div className="flex-1 space-y-4">
-                      <div className="h-24 rounded-2xl bg-white shadow-sm" />
-                      <div className="h-16 rounded-xl bg-white shadow-sm" />
-                      <div className="h-16 rounded-xl bg-white shadow-sm" />
-                      <div className="h-20 rounded-2xl" style={{ backgroundColor: `${config.color}15` }} />
+                    <div className="flex-1 space-y-3 overflow-hidden">
+                      <div className="h-20 rounded-xl bg-white shadow-sm" />
+                      <div className="h-14 rounded-lg bg-white shadow-sm" />
+                      <div className="h-14 rounded-lg bg-white shadow-sm" />
+                      <div className="h-16 rounded-xl" style={{ backgroundColor: `${config.color}15` }} />
                     </div>
 
                     {/* Bottom nav */}
-                    <div className="flex justify-around pt-4 border-t border-gray-100 mt-4">
+                    <div className="flex justify-around pt-3 border-t border-gray-100 mt-3">
                       {[1, 2, 3, 4].map((i) => (
                         <div
                           key={i}
-                          className="w-6 h-6 rounded-lg"
+                          className="w-5 h-5 rounded-md"
                           style={{
                             backgroundColor: i === 1 ? config.color : '#E5E7EB',
                             opacity: i === 1 ? 1 : 0.5,
@@ -247,7 +247,7 @@ export default function ProductShowcase({ productId }: ProductShowcaseProps) {
                 </div>
 
                 {/* Notch */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-full" />
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-gray-900 rounded-full" />
               </div>
 
               {/* Floating elements */}

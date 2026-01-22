@@ -8,6 +8,8 @@ export default createMiddleware({
 });
 
 export const config = {
-  // Skip static files (files with extensions) and Next.js internals
-  matcher: ['/((?!_next|api|.*\\..*).*)'],
+  matcher: [
+    // Match all paths except static files and API routes
+    '/((?!api|_next/static|_next/image|favicon\\.ico|manifest\\.json|robots\\.txt|sitemap\\.xml|images/).*)',
+  ],
 };

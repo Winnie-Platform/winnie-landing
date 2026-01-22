@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Copy, Check, Printer } from 'lucide-react';
 
 interface ShareButtonsProps {
@@ -28,13 +29,18 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const shareLinks = [
     {
       name: 'Zalo',
-      href: `https://zalo.me/share/url?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+      href: `https://sp.zalo.me/share_inline?d=${encodeURIComponent(url)}`,
       icon: (
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 17.344c-.156.26-.452.39-.782.39H7.61c-.486 0-.88-.394-.88-.88v-5.66c0-.33.13-.626.39-.782 2.29-1.43 4.58-2.86 6.87-4.29.26-.156.556-.156.782 0 .26.156.39.452.39.782v3.396h3.854c.33 0 .626.13.782.39.156.26.156.556 0 .782l-2.98 4.98c-.052.086-.104.156-.156.226-.052.07-.104.13-.156.182-.052.052-.104.104-.182.156-.07.052-.156.104-.26.156-.104.052-.208.078-.312.104-.104.026-.208.052-.312.052H9.348v2.34h8.424c.104.026.208.078.312.156.104.078.182.182.26.312.052.104.078.234.052.364-.026.13-.078.26-.156.364-.078.104-.182.182-.312.26-.104.052-.234.078-.364.052z"/>
-        </svg>
+        <Image
+          src="/images/Icon_of_Zalo.svg"
+          alt="Zalo"
+          width={28}
+          height={28}
+          className="rounded"
+        />
       ),
-      bgColor: 'bg-[#0068FF] hover:bg-[#0054CC]',
+      bgColor: 'bg-transparent hover:bg-blue-50',
+      isImageIcon: true,
     },
     {
       name: 'Facebook',
@@ -87,7 +93,9 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
           }}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full text-white transition-all ${link.bgColor}`}
+          className={`flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full transition-all ${
+            link.isImageIcon ? 'p-1' : 'text-white'
+          } ${link.bgColor}`}
           aria-label={`Share on ${link.name}`}
           title={link.name}
         >

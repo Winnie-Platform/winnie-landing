@@ -3,46 +3,46 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle } from 'lucide-react';
-
-const CONTACT_EMAIL = 'winnie@yeowubie.com';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function PartnershipForm() {
   const t = useTranslations('partnership');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const company = formData.get('company') as string;
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const phone = formData.get('phone') as string;
-    const type = formData.get('type') as string;
-    const message = formData.get('message') as string;
+    const data = {
+      company: formData.get('company') as string,
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
+      type: formData.get('type') as string,
+      message: formData.get('message') as string,
+    };
 
-    // Create email subject and body
-    const subject = `[Partnership Inquiry] ${company} - ${type}`;
-    const body = `Company: ${company}
-Contact Person: ${name}
-Email: ${email}
-Phone: ${phone}
-Partnership Type: ${type}
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-Message:
-${message}`;
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
 
-    // Open mailto link
-    const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
-
-    // Show success state after a brief delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      setIsSubmitted(true);
+    } catch {
+      setError('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -162,6 +162,14 @@ ${message}`;
           className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[var(--color-brand-500)] focus:border-transparent transition-all resize-none"
         />
       </div>
+
+      {/* Error Message */}
+      {error && (
+        <div className="flex items-center gap-2 p-4 bg-red-50 text-red-700 rounded-xl">
+          <AlertCircle className="w-5 h-5 flex-shrink-0" />
+          <span>{error}</span>
+        </div>
+      )}
 
       {/* Submit Button */}
       <button

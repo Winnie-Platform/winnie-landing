@@ -14,8 +14,9 @@ import {
   getCategoryNames,
   getAuthorName,
 } from '@/lib/wordpress';
-import { Calendar, User, ArrowLeft, Share2, Clock } from 'lucide-react';
+import { Calendar, User, ArrowLeft, Clock } from 'lucide-react';
 import { locales } from '@/i18n/config';
+import ShareButtons from './ShareButtons';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,7 +27,6 @@ type Props = {
 export async function generateStaticParams() {
   const params: Array<{ locale: string; slug: string }> = [];
 
-  // 각 언어별로 해당 언어 카테고리의 슬러그만 가져옴
   for (const locale of locales) {
     const slugs = await getPostSlugs(locale);
     params.push(...slugs.map((slug) => ({ locale, slug })));
@@ -44,18 +44,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const featuredImage = getFeaturedImageUrl(post);
+  const title = stripHtml(post.title.rendered);
+  const description = stripHtml(post.excerpt.rendered).slice(0, 160);
+  const url = `https://mywinnie.com/${locale}/blog/${slug}`;
 
   return {
-    title: post.title.rendered,
-    description: stripHtml(post.excerpt.rendered).slice(0, 160),
+    title,
+    description,
+    authors: [{ name: getAuthorName(post) }],
     openGraph: {
       type: 'article',
-      title: post.title.rendered,
-      description: stripHtml(post.excerpt.rendered).slice(0, 160),
-      images: featuredImage ? [{ url: featuredImage }] : [],
+      title,
+      description,
+      url,
+      siteName: 'Winnie',
+      images: featuredImage
+        ? [
+            {
+              url: featuredImage,
+              width: 1200,
+              height: 630,
+              alt: title,
+            },
+          ]
+        : [],
       publishedTime: post.date,
       modifiedTime: post.modified,
-      locale: locale,
+      locale: locale === 'ko' ? 'ko_KR' : locale === 'vi' ? 'vi_VN' : 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: featuredImage ? [featuredImage] : [],
+    },
+    alternates: {
+      canonical: url,
+      languages: {
+        'ko': `https://mywinnie.com/ko/blog/${slug}`,
+        'vi': `https://mywinnie.com/vi/blog/${slug}`,
+        'en': `https://mywinnie.com/en/blog/${slug}`,
+      },
     },
   };
 }
@@ -74,15 +103,24 @@ export default async function BlogPostPage({ params }: Props) {
   const readingTime = calculateReadingTime(post.content.rendered, locale);
   const categories = getCategoryNames(post);
   const authorName = getAuthorName(post);
+  const postUrl = `https://mywinnie.com/${locale}/blog/${slug}`;
+  const postTitle = stripHtml(post.title.rendered);
 
-  const labels: Record<string, { back: string; share: string; cta: string; ctaDesc: string; ctaBtn: string; minRead: string }> = {
+  const labels: Record<string, {
+    back: string;
+    share: string;
+    cta: string;
+    ctaDesc: string;
+    ctaBtn: string;
+    minRead: string;
+  }> = {
     ko: {
       back: '블로그로 돌아가기',
       share: '공유하기',
       cta: '위니 앱에서 더 많은 혜택을 만나보세요',
       ctaDesc: '베트남 로컬 가게의 회원권을 한눈에 검색하고 구매하세요',
       ctaBtn: '앱 다운로드',
-      minRead: '분 읽기',
+      minRead: '분',
     },
     vi: {
       back: 'Quay lại blog',
@@ -90,7 +128,7 @@ export default async function BlogPostPage({ params }: Props) {
       cta: 'Khám phá thêm ưu đãi trên Winnie',
       ctaDesc: 'Tìm kiếm và mua thẻ thành viên của các cửa hàng địa phương Việt Nam',
       ctaBtn: 'Tải ứng dụng',
-      minRead: 'phút đọc',
+      minRead: 'phút',
     },
     en: {
       back: 'Back to blog',
@@ -98,7 +136,7 @@ export default async function BlogPostPage({ params }: Props) {
       cta: 'Discover more benefits on Winnie',
       ctaDesc: 'Search and purchase membership cards from local Vietnamese stores',
       ctaBtn: 'Download App',
-      minRead: 'min read',
+      minRead: 'min',
     },
   };
 
@@ -107,12 +145,12 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-white pt-24">
-        <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <main className="min-h-screen bg-white pt-20 sm:pt-24">
+        <article className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
           {/* Back link */}
           <Link
             href={`/${locale}/blog`}
-            className="mb-8 inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900"
+            className="mb-6 sm:mb-8 inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             {t.back}
@@ -120,8 +158,8 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Category */}
           {categories.length > 0 && (
-            <div className="mb-4">
-              <span className="rounded-full bg-[var(--color-primary-50)] px-3 py-1 text-sm font-medium text-[var(--color-primary-600)]">
+            <div className="mb-3 sm:mb-4">
+              <span className="rounded-full bg-[var(--color-brand-50)] px-3 py-1.5 text-xs sm:text-sm font-medium text-[var(--color-brand-600)]">
                 {categories[0]}
               </span>
             </div>
@@ -129,21 +167,21 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Title */}
           <h1
-            className="text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
 
           {/* Meta */}
-          <div className="mt-6 flex flex-wrap items-center gap-6 border-b border-gray-200 pb-6 text-sm text-gray-500">
-            <span className="flex items-center gap-2">
+          <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-3 sm:gap-5 text-sm text-gray-500">
+            <span className="flex items-center gap-1.5">
               <Calendar className="h-4 w-4" />
               {formatDate(post.date, locale)}
             </span>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-1.5">
               <Clock className="h-4 w-4" />
-              {readingTime} {t.minRead}
+              {readingTime}{t.minRead}
             </span>
-            <span className="flex items-center gap-2">
+            <span className="flex items-center gap-1.5">
               <User className="h-4 w-4" />
               {authorName}
             </span>
@@ -151,73 +189,38 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Featured Image */}
           {featuredImage && (
-            <div className="relative mt-8 aspect-video overflow-hidden rounded-2xl">
+            <div className="relative mt-6 sm:mt-8 aspect-[16/9] overflow-hidden rounded-xl sm:rounded-2xl bg-gray-100">
               <Image
                 src={featuredImage}
-                alt={stripHtml(post.title.rendered)}
+                alt={postTitle}
                 fill
+                sizes="(max-width: 768px) 100vw, 768px"
                 className="object-cover"
                 priority
+                quality={85}
               />
             </div>
           )}
 
           {/* Content */}
           <div
-            className="prose prose-lg mt-10 max-w-none prose-headings:font-bold prose-a:text-[var(--color-primary-500)] prose-img:rounded-xl"
+            className="blog-content mt-8 sm:mt-10"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
 
           {/* Share */}
-          <div className="mt-12 flex items-center gap-4 border-t border-gray-200 pt-8">
-            <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-              <Share2 className="h-4 w-4" />
-              {t.share}
-            </span>
-            <div className="flex gap-2">
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://mywinnie.com/${locale}/blog/${slug}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200"
-                aria-label="Share on Facebook"
-              >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-                </svg>
-              </a>
-              <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://mywinnie.com/${locale}/blog/${slug}`)}&text=${encodeURIComponent(stripHtml(post.title.rendered))}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200"
-                aria-label="Share on X"
-              >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://mywinnie.com/${locale}/blog/${slug}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-gray-100 p-2 text-gray-600 hover:bg-gray-200"
-                aria-label="Share on LinkedIn"
-              >
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </a>
-            </div>
+          <div className="mt-10 sm:mt-12 border-t border-gray-200 pt-6 sm:pt-8">
+            <p className="text-sm font-medium text-gray-600 mb-4">{t.share}</p>
+            <ShareButtons url={postUrl} title={postTitle} />
           </div>
 
           {/* CTA */}
-          <div className="mt-12 rounded-2xl bg-[var(--color-primary-50)] p-8 text-center">
-            <h3 className="text-xl font-bold text-gray-900">{t.cta}</h3>
-            <p className="mt-2 text-gray-600">{t.ctaDesc}</p>
+          <div className="mt-10 sm:mt-12 rounded-2xl bg-gradient-to-br from-[var(--color-brand-50)] to-[var(--color-brand-100)] p-6 sm:p-8 text-center">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900">{t.cta}</h3>
+            <p className="mt-2 text-sm sm:text-base text-gray-600">{t.ctaDesc}</p>
             <a
               href="#download"
-              className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-[var(--color-cta-500)] px-8 font-semibold text-white hover:bg-[var(--color-cta-600)]"
+              className="mt-5 sm:mt-6 inline-flex h-11 sm:h-12 items-center justify-center rounded-full bg-[var(--color-brand-600)] px-6 sm:px-8 text-sm sm:text-base font-semibold text-white hover:bg-[var(--color-brand-700)] transition-colors"
             >
               {t.ctaBtn}
             </a>

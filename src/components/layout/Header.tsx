@@ -116,6 +116,7 @@ export default function Header() {
   const navLinks = [
     { href: '#ecosystem', label: t('ecosystem') },
     { href: '#creative-studio', label: t('studio') },
+    { href: `/${locale}/blog`, label: t('blog') },
     { href: `/${locale}/partnership`, label: t('partnership') },
   ];
 

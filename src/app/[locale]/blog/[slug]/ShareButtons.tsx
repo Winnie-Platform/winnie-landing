@@ -29,7 +29,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
   const shareLinks = [
     {
       name: 'Zalo',
-      href: `https://zalo.me/share?u=${encodeURIComponent(url)}`,
+      href: `https://sp.zalo.me/share_inline?d=${encodeURIComponent(url)}`,
       icon: (
         <Image
           src="/images/Icon_of_Zalo.svg"

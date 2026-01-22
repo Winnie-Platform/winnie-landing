@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getAllArticleSlugs } from '@/lib/strapi';
+import { getPostSlugs } from '@/lib/wordpress';
 
 const baseUrl = 'https://mywinnie.com';
 const locales = ['ko', 'vi', 'en'] as const;
@@ -9,9 +9,6 @@ type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'y
 export const revalidate = 3600; // Revalidate every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Get blog slugs from Strapi (다국어 별도 발행)
-  const articleSlugs = await getAllArticleSlugs();
-
   // Static pages with priorities
   const staticPages: Array<{ path: string; changeFrequency: ChangeFrequency; priority: number }> = [
     { path: '', changeFrequency: 'weekly', priority: 1.0 },
@@ -35,13 +32,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  // Blog posts from Strapi (각 언어별 개별 URL)
-  const blogUrls: MetadataRoute.Sitemap = articleSlugs.map(({ slug, locale }) => ({
-    url: `${baseUrl}/${locale}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as ChangeFrequency,
-    priority: 0.7,
-  }));
+  // Blog posts from WordPress (각 언어별 개별 URL)
+  const blogUrls: MetadataRoute.Sitemap = [];
+
+  for (const locale of locales) {
+    try {
+      const slugs = await getPostSlugs(locale);
+      for (const slug of slugs) {
+        blogUrls.push({
+          url: `${baseUrl}/${locale}/blog/${slug}`,
+          lastModified: new Date(),
+          changeFrequency: 'weekly' as ChangeFrequency,
+          priority: 0.7,
+        });
+      }
+    } catch {
+      // WordPress API not available, skip blog URLs
+    }
+  }
 
   return [...staticUrls, ...blogUrls];
 }

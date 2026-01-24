@@ -24,7 +24,7 @@ const services = [
 const socialLinks = [
   {
     name: 'Yellow Winnie',
-    url: 'https://www.link.mywinnie.com/vendor/winnie_studio',
+    url: 'https://zalo.me/352608876316800107',
     icon: (
       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
         <circle cx="12" cy="12" r="10" />
@@ -214,7 +214,7 @@ export default function CreativeStudio() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <a
-            href="https://www.link.mywinnie.com/vendor/winnie_studio"
+            href="https://zalo.me/352608876316800107"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-gray-900 font-medium transition-all hover:shadow-xl hover:shadow-white/20 hover:scale-105"

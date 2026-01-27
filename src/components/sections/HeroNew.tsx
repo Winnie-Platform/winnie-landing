@@ -165,7 +165,7 @@ export default function HeroNew() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-gray-900 leading-[1.1]"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.1]"
           >
             {t('title')}
           </motion.h1>
@@ -176,7 +176,7 @@ export default function HeroNew() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto"
+            className="mt-6 text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
           >
             {t('subtitle')}
           </motion.p>

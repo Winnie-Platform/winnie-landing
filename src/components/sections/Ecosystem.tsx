@@ -92,11 +92,11 @@ export default function Ecosystem() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={titleRef} className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+        <div ref={titleRef} className="text-center max-w-4xl mx-auto mb-16 lg:mb-20">
           <motion.span className="inline-block text-sm font-semibold text-[var(--color-brand-600)] uppercase tracking-wider mb-4">
             {t('badge')}
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight px-4">
             {t('title')}
           </h2>
           <p className="mt-6 text-lg text-gray-600 leading-relaxed">

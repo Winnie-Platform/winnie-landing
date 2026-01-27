@@ -153,7 +153,7 @@ export default function ProductShowcase({ productId }: ProductShowcaseProps) {
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
               {t('title')}
             </h2>
 

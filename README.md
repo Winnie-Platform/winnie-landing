@@ -60,4 +60,3 @@ Optimized for deployment on [Vercel](https://vercel.com).
 - Landing Page: https://mywinnie.com
 - Business Portal: https://winnievendor.com
 - Yellow Pages: https://yellow.mywinnie.com
-

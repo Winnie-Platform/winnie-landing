@@ -1,15 +1,15 @@
 # Winnie Landing Page
 
-베트남 로컬 회원권/멤버십 마켓플레이스 앱 **Winnie(위니)**의 랜딩 페이지입니다.
+베트남 로컬 회원권/멤버십 마켓플레이스 앱 Winnie(위니)의 랜딩 페이지입니다.
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **UI Library**: shadcn/ui
-- **i18n**: next-intl (ko, vi, en)
-- **Font**: Montserrat (Google Fonts)
+- Framework: Next.js 16 (App Router)
+- Language: TypeScript
+- Styling: Tailwind CSS 4
+- UI Library: shadcn/ui
+- i18n: next-intl (ko, vi, en)
+- Font: Montserrat (Google Fonts)
 
 ## Getting Started
 

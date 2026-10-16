@@ -8,6 +8,7 @@ import JsonLd, {
   softwareAppSchema,
 } from '@/components/seo/JsonLd';
 import '@/styles/globals.css';
+import ClosureNotice from '@/components/common/ClosureNotice';
 
 // Viewport configuration
 export const viewport: Viewport = {
@@ -197,7 +198,10 @@ export default function RootLayout({
         <JsonLd data={faqSchema} />
         <JsonLd data={softwareAppSchema} />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <ClosureNotice />
+      </body>
     </html>
   );
 }

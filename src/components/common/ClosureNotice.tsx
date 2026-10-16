@@ -8,15 +8,15 @@ const TITLE = "Thông báo ngừng dịch vụ · 서비스 종료 안내 · Ser
 const BODY: { lang: string; text: string }[] = [
   {
     lang: "vi",
-    text: "Dịch vụ Winnie sẽ ngừng hoạt động vào ngày 30/10/2026. Vui lòng lưu dữ liệu cần thiết trước ngày 29/10/2026. Toàn bộ thông tin thành viên sẽ được xóa ngay khi dịch vụ ngừng hoạt động.",
+    text: "Dịch vụ Winnie sẽ ngừng hoạt động vào ngày 31/10/2026. Vui lòng lưu dữ liệu cần thiết trước ngày 30/10/2026. Toàn bộ thông tin thành viên sẽ được xóa ngay khi dịch vụ ngừng hoạt động.",
   },
   {
     lang: "ko",
-    text: "위니 서비스가 2026년 10월 30일(금)에 종료됩니다. 남겨 두실 자료는 10월 29일까지 저장해 주세요. 종료와 함께 회원 정보는 모두 즉시 삭제돼요.",
+    text: "위니 서비스가 2026년 10월 31일(토)에 종료됩니다. 남겨 두실 자료는 10월 30일까지 저장해 주세요. 종료와 함께 회원 정보는 모두 즉시 삭제돼요.",
   },
   {
     lang: "en",
-    text: "Winnie will close on October 30, 2026. Please save any data you need before October 29. All member information will be deleted immediately at closure.",
+    text: "Winnie will close on October 31, 2026. Please save any data you need before October 30. All member information will be deleted immediately at closure.",
   },
 ]
 const CONTACT = "info.vn@yeowubie.com · info@yeowubie.com"
